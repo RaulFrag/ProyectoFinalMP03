@@ -17,7 +17,7 @@ class Highscore
     void SetName(std::string nam);
 
     void bubbleSort();
-
+    
     void write(std::fstream& file);
     void readStart(std::fstream& file);
     void readEnd(std::fstream& file);

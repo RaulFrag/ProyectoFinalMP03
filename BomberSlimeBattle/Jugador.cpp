@@ -20,7 +20,7 @@ Jugador::~Jugador()
 
 void Jugador::loadSprite()
 {
-	playerId = rm->loadAndGetGraphicID("..\\Assets\\slime_rosa.png");
+	playerId = rm->loadAndGetGraphicID("Assets\\slime rosa.png");
 }
 
 void Jugador::playerMovement()
