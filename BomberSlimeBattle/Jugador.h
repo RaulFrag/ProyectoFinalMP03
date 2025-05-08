@@ -11,7 +11,6 @@ class Jugador
 
 	int playerId;
 
-
 public:
 	Jugador();
 	~Jugador();

@@ -30,27 +30,30 @@ void Jugador::update()
 	SDL_Event key_event;
 	if (SDL_PollEvent(&key_event)!=0)
 	{
-		switch (key_event.key.type)
+		if (playerId == 1)
 		{
-		case SDL_KEYDOWN:
-			switch (key_event.key.keysym.scancode)
+			switch (key_event.key.type)
 			{
-			case SDL_SCANCODE_RIGHT:
-				playerPos.x += vel;
+			case SDL_KEYDOWN:
+				switch (key_event.key.keysym.scancode)
+				{
+				case SDL_SCANCODE_RIGHT:
+					playerPos.x += vel;
+					break;
+				case SDL_SCANCODE_LEFT:
+					playerPos.x -= vel;
+					break;
+				case SDL_SCANCODE_DOWN:
+					playerPos.y += vel;
+					break;
+				case SDL_SCANCODE_UP:
+					playerPos.y -= vel;
+					break;
+				}
 				break;
-			case SDL_SCANCODE_LEFT:
-				playerPos.x -= vel;
-				break;
-			case SDL_SCANCODE_DOWN:
-				playerPos.y += vel;
-				break;
-			case SDL_SCANCODE_UP:
-				playerPos.y -= vel;
+			default:
 				break;
 			}
-			break;
-		default:
-			break;
 		}
 	}
 }
