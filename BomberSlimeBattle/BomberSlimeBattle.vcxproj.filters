@@ -16,6 +16,9 @@
     <Filter Include="Resource Files\Assets">
       <UniqueIdentifier>{765877a5-1df0-407f-a86d-95ec8be04006}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\dll">
+      <UniqueIdentifier>{c8b19f65-2a77-47e6-9c12-8430806d53a4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sound.cpp">
@@ -156,6 +159,15 @@
     </CopyFileToFolders>
     <CopyFileToFolders Include="Assets\tileset.tsx">
       <Filter>Resource Files\Assets</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="SDL2.dll">
+      <Filter>Resource Files\dll</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="SDL2_image.dll">
+      <Filter>Resource Files\dll</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="SDL2_mixer.dll">
+      <Filter>Resource Files\dll</Filter>
     </CopyFileToFolders>
   </ItemGroup>
 </Project>

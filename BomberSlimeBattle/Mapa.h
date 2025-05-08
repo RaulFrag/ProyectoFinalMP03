@@ -5,7 +5,7 @@
 #include "ResourceManager.h"
 #include "Video.h"
 
-const int NUM_CAPAS = 1;
+const int NUM_CAPAS = 3;
 
 class Mapa
 {
