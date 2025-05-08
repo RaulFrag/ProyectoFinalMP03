@@ -25,6 +25,7 @@ int main(int argc, char* args[])
 
 	while (true)
 	{
+		video->clearScreen();
 		/*video->clearScreen();
 		currentTime = SDL_GetTicks();
 		deltaTime = currentTime - lastTime;
@@ -33,7 +34,10 @@ int main(int argc, char* args[])
 		}
 		lastTime = currentTime;*/
 
-		pj1.playerMovement();
+		pj1.update();
+
+		map->render();
+		pj1.render();
 
 		video->updateScreen();
 

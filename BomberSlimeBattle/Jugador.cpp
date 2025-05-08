@@ -12,6 +12,8 @@ Jugador::Jugador()
 
 	playerPos.x = 0;
 	playerPos.y = 0;
+
+	vel = 32;
 }
 
 Jugador::~Jugador()
@@ -23,7 +25,7 @@ void Jugador::loadSprite()
 	playerId = rm->loadAndGetGraphicID("Assets\\slime rosa.png");
 }
 
-void Jugador::playerMovement()
+void Jugador::update()
 {
 	SDL_Event key_event;
 	if (SDL_PollEvent(&key_event)!=0)
@@ -33,11 +35,17 @@ void Jugador::playerMovement()
 		case SDL_KEYDOWN:
 			switch (key_event.key.keysym.scancode)
 			{
-			case 79:
-				playerPos.x += 5;
+			case SDL_SCANCODE_RIGHT:
+				playerPos.x += vel;
 				break;
-			case 80:
-				playerPos.x -= 5;
+			case SDL_SCANCODE_LEFT:
+				playerPos.x -= vel;
+				break;
+			case SDL_SCANCODE_DOWN:
+				playerPos.y += vel;
+				break;
+			case SDL_SCANCODE_UP:
+				playerPos.y -= vel;
 				break;
 			}
 			break;
@@ -45,6 +53,9 @@ void Jugador::playerMovement()
 			break;
 		}
 	}
+}
 
+void Jugador::render()
+{
 	vid->renderGraphic(playerId, playerPos.x, playerPos.y, playerSprite.w, playerSprite.h, playerSprite.x, playerSprite.y);
 }

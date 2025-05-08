@@ -11,11 +11,15 @@ class Jugador
 
 	int playerId;
 
+
 public:
 	Jugador();
 	~Jugador();
 
+	int vel;
+
 	void loadSprite();
-	void playerMovement();
+	void update();
+	void render();
 };
 
