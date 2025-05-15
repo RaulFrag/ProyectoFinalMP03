@@ -17,8 +17,10 @@ public:
 
 	int vel;
 
+	bool collision(std::vector <int> Layer2, std::vector <int> Layer3, int val, int xy);
+
 	void loadSprite();
-	void update();
+	void update(std::vector <int> Layer2, std::vector <int> Layer3);
 	void render();
 };
 

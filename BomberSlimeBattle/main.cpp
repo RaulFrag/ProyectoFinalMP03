@@ -27,7 +27,7 @@ int main(int argc, char* args[])
 	{
 		video->clearScreen();
 
-		pj1.update();
+		pj1.update(map->getLayer2(), map->getLayer3());
 
 		map->render();
 		pj1.render();
