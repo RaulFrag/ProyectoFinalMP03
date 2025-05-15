@@ -89,6 +89,14 @@ int Mapa::loadMap(const char * filename, const char * imagename)
 		}
 	}*/
 
+	/*saveBinary();
+	readBinary("example.bin");*/
+
+	return 0;
+}
+
+void Mapa::render()
+{
 	int count = 0;
 	int _spriteX = 0;
 	int _spriteY = 0;
@@ -118,15 +126,6 @@ int Mapa::loadMap(const char * filename, const char * imagename)
 			}
 		}
 	}
-
-	/*saveBinary();
-	readBinary("example.bin");*/
-
-	return 0;
-}
-
-void Mapa::render()
-{
 }
 
 int Mapa::getIDfromLayer(int layer, int PosX, int PosY)
