@@ -10,8 +10,8 @@ Jugador::Jugador()
 	playerSprite.h = 32;
 	playerSprite.w = 32;
 
-	playerPos.x = 0;
-	playerPos.y = 0;
+	playerPos.x = 64;
+	playerPos.y = 64;
 
 	vel = 32;
 }

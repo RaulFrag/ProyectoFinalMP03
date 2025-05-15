@@ -20,7 +20,7 @@ int main(int argc, char* args[])
 
 	Mapa* map = new Mapa();
 
-	map->loadMap("Assets\\mapa1.tmx", "Assets\\tileset.png");
+	map->loadMap("Assets\\mapa3.tmx", "Assets\\tileset.png");
 	pj1.loadSprite();
 
 	while (true)

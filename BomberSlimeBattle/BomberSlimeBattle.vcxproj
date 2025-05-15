@@ -152,7 +152,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Bomb.cpp" />
-    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Highscore.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="Jugador.cpp" />
