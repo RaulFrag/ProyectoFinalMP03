@@ -151,6 +151,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Bomb.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Highscore.cpp" />
     <ClCompile Include="Input.cpp" />
@@ -164,6 +165,7 @@
     <ClCompile Include="Video.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Bomb.h" />
     <ClInclude Include="Highscore.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="Jugador.h" />

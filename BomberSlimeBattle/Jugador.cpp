@@ -7,8 +7,8 @@ Jugador::Jugador()
 
 	playerSprite.x = 0;
 	playerSprite.y = 0;
-	playerSprite.h = 16;
-	playerSprite.w = 16;
+	playerSprite.h = 32;
+	playerSprite.w = 32;
 
 	playerPos.x = 0;
 	playerPos.y = 0;
