@@ -26,13 +26,6 @@ int main(int argc, char* args[])
 	while (true)
 	{
 		video->clearScreen();
-		/*video->clearScreen();
-		currentTime = SDL_GetTicks();
-		deltaTime = currentTime - lastTime;
-		if (deltaTime < (int)msFrame) {
-			SDL_Delay((int)msFrame - deltaTime);
-		}
-		lastTime = currentTime;*/
 
 		pj1.update();
 
