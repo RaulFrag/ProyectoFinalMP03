@@ -114,11 +114,11 @@ void Mapa::render()
 
 				if (_id >= 0)
 				{
-					int CellX = _id % 15;
-					int CellY = _id / 15;
+					int CellX = _id % 17;
+					int CellY = _id / 17;
 
-					_spriteX = CellX * (getTileWidth() + 1);
-					_spriteY = CellY * (getTileHeight() + 1);
+					_spriteX = CellX * (getTileWidth());
+					_spriteY = CellY * (getTileHeight());
 
 					vid->renderGraphic(tilemap, _tileWidth * j, _tileHeight * i, _tileWidth, _tileHeight, _spriteX, _spriteY);
 				}
