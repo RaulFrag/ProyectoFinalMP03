@@ -1,6 +1,2 @@
-﻿  Mapa.cpp
-F:\DAM 2\Programacio 2\ProyectoFinalMP03\BomberSlimeBattle\Mapa.cpp(123,62): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-F:\DAM 2\Programacio 2\ProyectoFinalMP03\BomberSlimeBattle\Mapa.cpp(123,45): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-  main.cpp
-  Generating Code...
+﻿  main.cpp
   BomberSlimeBattle.vcxproj -> F:\DAM 2\Programacio 2\ProyectoFinalMP03\BomberSlimeBattle\x64\Debug\BomberSlimeBattle.exe

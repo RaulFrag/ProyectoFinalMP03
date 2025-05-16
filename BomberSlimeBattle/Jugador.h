@@ -11,18 +11,19 @@ class Jugador
 
 	int playerId;
 
+	bool collision(std::vector <int> Layer2, std::vector <int> Layer3, int val, int xy);
+
 public:
 	Jugador();
 	~Jugador();
 
 	int vel;
 
-	bool collision(std::vector <int> Layer2, std::vector <int> Layer3, int val, int xy);
+	int checkKey();
 
 	void init(int tile, int id);
-
 	void loadSprite(std::string file);
-	void update(std::vector <int> Layer2, std::vector <int> Layer3);
+	void update(std::vector <int> Layer2, std::vector <int> Layer3, int key);
 	void render();
 };
 
