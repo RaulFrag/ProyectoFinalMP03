@@ -7,13 +7,13 @@ Jugador::Jugador()
 
 	playerSprite.x = 0;
 	playerSprite.y = 0;
-	playerSprite.h = 32;
-	playerSprite.w = 32;
+	playerSprite.h = tile;
+	playerSprite.w = tile;
 
-	playerPos.x = 64;
-	playerPos.y = 64;
+	playerPos.x = tile * 2;
+	playerPos.y = tile * 2;
 
-	vel = 32;
+	vel = tile;
 }
 
 Jugador::~Jugador()
@@ -29,16 +29,16 @@ bool Jugador::collision(std::vector<int> Layer2, std::vector<int> Layer3, int va
 		{
 			return false;
 		}
-		else
-		{
-			return true;
-		}
 	}
 	else if (xy == 1)
 	{
-
+		int i = playerPos.x / 32 + (playerPos.y + val) / 32 * 20;
+		if ((Layer2[i] == 0) && (Layer3[i] == 0))
+		{
+			return false;
+		}
 	}
-	return false;
+	return true;
 }
 
 void Jugador::loadSprite()
@@ -65,13 +65,22 @@ void Jugador::update(std::vector <int> Layer2, std::vector <int> Layer3)
 					}
 					break;
 				case SDL_SCANCODE_LEFT:
-					playerPos.x -= vel;
+					if (!collision(Layer2, Layer3, -vel, 0))
+					{
+						playerPos.x -= vel;
+					}
 					break;
 				case SDL_SCANCODE_DOWN:
-					playerPos.y += vel;
+					if (!collision(Layer2, Layer3, vel, 1))
+					{
+						playerPos.y += vel;
+					}
 					break;
 				case SDL_SCANCODE_UP:
-					playerPos.y -= vel;
+					if (!collision(Layer2, Layer3, -vel, 1))
+					{
+						playerPos.y -= vel;
+					}
 					break;
 				}
 				break;

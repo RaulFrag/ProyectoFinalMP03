@@ -17,7 +17,6 @@ Highscore hs;
 
 int main(int argc, char* args[])
 {
-
 	Mapa* map = new Mapa();
 
 	map->loadMap("Assets\\mapa3.tmx", "Assets\\tileset.png");
