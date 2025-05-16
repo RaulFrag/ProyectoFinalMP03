@@ -7,13 +7,13 @@ Jugador::Jugador()
 
 	playerSprite.x = 0;
 	playerSprite.y = 0;
-	playerSprite.h = tile;
-	playerSprite.w = tile;
+	playerSprite.h = 0;
+	playerSprite.w = 0;
 
-	playerPos.x = tile * 2;
-	playerPos.y = tile * 2;
+	playerPos.x = 0;
+	playerPos.y = 0;
 
-	vel = tile;
+	vel = 0;
 }
 
 Jugador::~Jugador()
@@ -41,9 +41,39 @@ bool Jugador::collision(std::vector<int> Layer2, std::vector<int> Layer3, int va
 	return true;
 }
 
-void Jugador::loadSprite()
+void Jugador::init(int tile, int id)
 {
-	playerId = rm->loadAndGetGraphicID("Assets\\slime rosa.png");
+	playerSprite.h = tile;
+	playerSprite.w = tile;
+
+	switch (id)
+	{
+	case 1:
+		playerPos.x = tile * 2;
+		playerPos.y = tile * 2;
+		break;
+	case 2:
+		playerPos.x = tile * 17;
+		playerPos.y = tile * 2;
+		break;
+	case 3:
+		playerPos.x = tile * 2;
+		playerPos.y = tile * 17;
+		break;
+	case 4:
+		playerPos.x = tile * 17;
+		playerPos.y = tile * 17;
+		break;
+	default:
+		break;
+	}
+
+	vel = tile;
+}
+
+void Jugador::loadSprite(std::string file)
+{
+	playerId = rm->loadAndGetGraphicID(file.c_str());
 }
 
 void Jugador::update(std::vector <int> Layer2, std::vector <int> Layer3)
@@ -77,6 +107,43 @@ void Jugador::update(std::vector <int> Layer2, std::vector <int> Layer3)
 					}
 					break;
 				case SDL_SCANCODE_UP:
+					if (!collision(Layer2, Layer3, -vel, 1))
+					{
+						playerPos.y -= vel;
+					}
+					break;
+				}
+				break;
+			default:
+				break;
+			}
+		}
+		else if (playerId == 2)
+		{
+			switch (key_event.key.type)
+			{
+			case SDL_KEYDOWN:
+				switch (key_event.key.keysym.scancode)
+				{
+				case SDL_SCANCODE_D:
+				if (!collision(Layer2, Layer3, vel, 0))
+					{
+						playerPos.x += vel;
+					}
+					break;
+				case SDL_SCANCODE_A:
+					if (!collision(Layer2, Layer3, -vel, 0))
+					{
+						playerPos.x -= vel;
+					}
+					break;
+				case SDL_SCANCODE_S:
+					if (!collision(Layer2, Layer3, vel, 1))
+					{
+						playerPos.y += vel;
+					}
+					break;
+				case SDL_SCANCODE_W:
 					if (!collision(Layer2, Layer3, -vel, 1))
 					{
 						playerPos.y -= vel;

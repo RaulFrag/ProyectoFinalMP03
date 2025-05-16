@@ -19,7 +19,9 @@ public:
 
 	bool collision(std::vector <int> Layer2, std::vector <int> Layer3, int val, int xy);
 
-	void loadSprite();
+	void init(int tile, int id);
+
+	void loadSprite(std::string file);
 	void update(std::vector <int> Layer2, std::vector <int> Layer3);
 	void render();
 };
