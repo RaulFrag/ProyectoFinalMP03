@@ -207,17 +207,20 @@ void Jugador::render()
 
 void Jugador::placeBomb()
 {
-	bombas.emplace_back(playerPos.x, playerPos.y, playerSprite.w, 90);
+	int tileX = (playerPos.x / playerSprite.w) * playerSprite.w;
+	int tileY = (playerPos.y / playerSprite.h) * playerSprite.h;
+
+	bombas.emplace_back(tileX, tileY, playerSprite.w);
 }
 
-void Jugador::updateBombs(std::vector<int> layer3, int mapWidth, int mapHeight)
+void Jugador::updateBombs(std::vector<int>& layer3, int mapWidth, int mapHeight)
 {
 	for (auto& bomba : bombas)
 	{
 		bomba.update(layer3, mapWidth, mapHeight);
 	}
 
-	bombas.erase(std::remove_if(bombas.begin(), bombas.end(), 
+	bombas.erase(std::remove_if(bombas.begin(), bombas.end(),
 		[](Bomb& b) { return b.isExplotada(); }), bombas.end());
 }
 

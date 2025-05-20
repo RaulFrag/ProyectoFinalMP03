@@ -30,6 +30,6 @@ public:
 	void render();
 
 	void placeBomb();
-	void updateBombs(std::vector<int> layer3, int mapWidth, int mapHeight);
+	void updateBombs(std::vector<int>& layer3, int mapWidth, int mapHeight);
 	void renderBombs();
 };

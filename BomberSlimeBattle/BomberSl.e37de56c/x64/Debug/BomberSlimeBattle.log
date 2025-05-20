@@ -1,20 +1,5 @@
 ﻿  Bomb.cpp
-  Highscore.cpp
-C:\Users\raulf\OneDrive\Escritorio\ProyectoFinalMP03\BomberSlimeBattle\Highscore.cpp(62,12): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
-  Input.cpp
   Jugador.cpp
   main.cpp
-  Mapa.cpp
-C:\Users\raulf\OneDrive\Escritorio\ProyectoFinalMP03\BomberSlimeBattle\Mapa.cpp(123,62): warning C4267: 'argumento': conversión de 'size_t' a 'int'; posible pérdida de datos
-C:\Users\raulf\OneDrive\Escritorio\ProyectoFinalMP03\BomberSlimeBattle\Mapa.cpp(123,45): warning C4267: 'argumento': conversión de 'size_t' a 'int'; posible pérdida de datos
-  ResourceManager.cpp
-C:\Users\raulf\OneDrive\Escritorio\ProyectoFinalMP03\BomberSlimeBattle\ResourceManager.cpp(130,32): warning C4267: 'return': conversión de 'size_t' a 'Sint32'; posible pérdida de datos
-  Sound.cpp
-C:\Users\raulf\OneDrive\Escritorio\ProyectoFinalMP03\BomberSlimeBattle\Sound.cpp(65,30): warning C4267: 'return': conversión de 'size_t' a 'Sint32'; posible pérdida de datos
-  Thread.cpp
-  Tiles.cpp
-  tinyxml2.cpp
-  Video.cpp
-  Generando código...
-C:\Users\raulf\OneDrive\Escritorio\ProyectoFinalMP03\BomberSlimeBattle\ResourceManager.cpp(78,1): warning C4715: 'ResourceManager::getGraphicByID': no todas las rutas de acceso de control devuelven un valor
-  BomberSlimeBattle.vcxproj -> C:\Users\raulf\OneDrive\Escritorio\ProyectoFinalMP03\BomberSlimeBattle\x64\Debug\BomberSlimeBattle.exe
+  Generating Code...
+  BomberSlimeBattle.vcxproj -> C:\Users\damviod\Desktop\ProyectoFinalMP03\BomberSlimeBattle\x64\Debug\BomberSlimeBattle.exe

@@ -114,6 +114,8 @@ int main(int argc, char* args[])
 		pj3.render();
 		pj4.render();
 
+		pj1.renderBombs();
+
 		//Update Screen
 		video->updateScreen();
 
