@@ -2,7 +2,11 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
+<<<<<<< Updated upstream
       <FullPath>C:\Users\damviod\Desktop\ProyectoFinalMP03\BomberSlimeBattle\x64\Debug\BomberSlimeBattle.exe</FullPath>
+=======
+      <FullPath>C:\Users\raulf\OneDrive\Escritorio\ProyectoFinalMP03\BomberSlimeBattle\x64\Debug\BomberSlimeBattle.exe</FullPath>
+>>>>>>> Stashed changes
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />
