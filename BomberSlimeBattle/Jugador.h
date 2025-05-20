@@ -1,6 +1,7 @@
 #pragma once
 #include "ResourceManager.h"
 #include "Video.h"
+#include "Bomb.h"
 
 class Jugador
 {
@@ -12,6 +13,8 @@ class Jugador
 	int playerId;
 
 	bool collision(std::vector <int> Layer2, std::vector <int> Layer3, int val, int xy);
+
+	std::vector<Bomb> bombas;
 
 public:
 	Jugador();
@@ -25,5 +28,8 @@ public:
 	void loadSprite(std::string file);
 	void update(std::vector <int> Layer2, std::vector <int> Layer3, int key);
 	void render();
-};
 
+	void placeBomb();
+	void updateBombs(std::vector<int> layer3, int mapWidth, int mapHeight);
+	void renderBombs();
+};

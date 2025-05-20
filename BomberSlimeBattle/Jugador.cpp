@@ -64,17 +64,20 @@ int Jugador::checkKey()
 			case SDL_SCANCODE_UP:
 				return 4;
 				break;
-			case SDL_SCANCODE_D:
+			case SDL_SCANCODE_F:
 				return 5;
 				break;
-			case SDL_SCANCODE_A:
+			case SDL_SCANCODE_D:
 				return 6;
 				break;
-			case SDL_SCANCODE_S:
+			case SDL_SCANCODE_A:
 				return 7;
 				break;
-			case SDL_SCANCODE_W:
+			case SDL_SCANCODE_S:
 				return 8;
+				break;
+			case SDL_SCANCODE_W:
+				return 9;
 				break;
 			default:
 				return 0;
@@ -155,6 +158,9 @@ void Jugador::update(std::vector <int> Layer2, std::vector <int> Layer3, int key
 				playerPos.y -= vel;
 			}
 			break;
+		case 5:
+			placeBomb();
+			break;
 		}
 
 	}
@@ -166,25 +172,25 @@ void Jugador::update(std::vector <int> Layer2, std::vector <int> Layer3, int key
 		}
 		switch (key)
 		{
-		case 5:
+		case 6:
 			if (!collision(Layer2, Layer3, vel, 0))
 			{
 				playerPos.x += vel;
 			}
 			break;
-		case 6:
+		case 7:
 			if (!collision(Layer2, Layer3, -vel, 0))
 			{
 				playerPos.x -= vel;
 			}
 			break;
-		case 7:
+		case 8:
 			if (!collision(Layer2, Layer3, vel, 1))
 			{
 				playerPos.y += vel;
 			}
 			break;
-		case 8:
+		case 9:
 			if (!collision(Layer2, Layer3, -vel, 1))
 			{
 				playerPos.y -= vel;
@@ -197,4 +203,28 @@ void Jugador::update(std::vector <int> Layer2, std::vector <int> Layer3, int key
 void Jugador::render()
 {
 	vid->renderGraphic(playerId, playerPos.x, playerPos.y, playerSprite.w, playerSprite.h, playerSprite.x, playerSprite.y);
+}
+
+void Jugador::placeBomb()
+{
+	bombas.emplace_back(playerPos.x, playerPos.y, playerSprite.w, 90);
+}
+
+void Jugador::updateBombs(std::vector<int> layer3, int mapWidth, int mapHeight)
+{
+	for (auto& bomba : bombas)
+	{
+		bomba.update(layer3, mapWidth, mapHeight);
+	}
+
+	bombas.erase(std::remove_if(bombas.begin(), bombas.end(), 
+		[](Bomb& b) { return b.isExplotada(); }), bombas.end());
+}
+
+void Jugador::renderBombs()
+{
+	for (auto& bomba : bombas)
+	{
+		bomba.render();
+	}
 }

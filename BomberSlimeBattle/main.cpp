@@ -104,6 +104,9 @@ int main(int argc, char* args[])
 		int p4 = pj1.checkKey();
 		pj4.update(map->getLayer2(), map->getLayer3(), p4);
 
+		//Update Bombs
+		pj1.updateBombs(map->getLayer3(), map->getWidth(), map->getHeight());
+
 		//Paint everything
 		map->render();
 		pj1.render();
