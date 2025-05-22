@@ -6,7 +6,7 @@ Bomb::Bomb(int _x, int _y, int _tileSize)
     x = _x / _tileSize * _tileSize;
     y = _y / _tileSize * _tileSize;
     tileSize = _tileSize;
-    tiempo = 3000;
+    tiempo = 100;
     activa = true;
     explotada = false;
 

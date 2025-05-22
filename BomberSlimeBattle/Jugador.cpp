@@ -44,7 +44,8 @@ bool Jugador::collision(std::vector<int> Layer2, std::vector<int> Layer3, int va
 
 int Jugador::checkKey()
 {
-	SDL_Event key_event;
+	key->UpdateInput();
+	/*SDL_Event key_event;
 	if (SDL_PollEvent(&key_event) != 0)
 	{
 		switch (key_event.key.type)
@@ -88,7 +89,7 @@ int Jugador::checkKey()
 			return 0;
 			break;
 		}
-	}
+	}*/
 	return 0;
 }
 
@@ -128,74 +129,78 @@ void Jugador::loadSprite(std::string file)
 	playerId = rm->loadAndGetGraphicID(file.c_str());
 }
 
-void Jugador::update(std::vector <int> Layer2, std::vector <int> Layer3, int key)
+void Jugador::update(std::vector <int> Layer2, std::vector <int> Layer3, int deltaTime/*, int key*/)
 {
-	if (playerId == 1)
+	if (deltaTime >= 150)
 	{
-		switch (key)
+		if (playerId == 1)
 		{
-		case 1:
-			if (!collision(Layer2, Layer3, vel, 0))
+			if (key->getKeyPressed(Ti_Right) == true)
 			{
-				playerPos.x += vel;
+				if (!collision(Layer2, Layer3, vel, 0))
+				{
+					playerPos.x += vel;
+				}
 			}
-			break;
-		case 2:
-			if (!collision(Layer2, Layer3, -vel, 0))
+			else if (key->getKeyPressed(Ti_Left) == true)
 			{
-				playerPos.x -= vel;
+				if (!collision(Layer2, Layer3, -vel, 0))
+				{
+					playerPos.x -= vel;
+				}
 			}
-			break;
-		case 3:
-			if (!collision(Layer2, Layer3, vel, 1))
+			else if (key->getKeyPressed(Ti_Down) == true)
 			{
-				playerPos.y += vel;
+				if (!collision(Layer2, Layer3, vel, 1))
+				{
+					playerPos.y += vel;
+				}
 			}
-			break;
-		case 4:
-			if (!collision(Layer2, Layer3, -vel, 1))
+			else if (key->getKeyPressed(Ti_Up) == true)
 			{
-				playerPos.y -= vel;
+				if (!collision(Layer2, Layer3, -vel, 1))
+				{
+					playerPos.y -= vel;
+				}
 			}
-			break;
-		case 5:
-			placeBomb();
-			break;
+			else if (key->getKeyPressed(Ti_F) == true)
+			{
+				placeBomb();
+			}
 		}
-
-	}
-	else if (playerId == 2)
-	{
-		if (key != 0)
+		else if (playerId == 2)
 		{
-			std::cout << playerId << ": " << key << std::endl;
-		}
-		switch (key)
-		{
-		case 6:
-			if (!collision(Layer2, Layer3, vel, 0))
+			/*if (key != 0)
 			{
-				playerPos.x += vel;
+				std::cout << playerId << ": " << key << std::endl;
 			}
-			break;
-		case 7:
-			if (!collision(Layer2, Layer3, -vel, 0))
+			switch (key)
 			{
-				playerPos.x -= vel;
-			}
-			break;
-		case 8:
-			if (!collision(Layer2, Layer3, vel, 1))
-			{
-				playerPos.y += vel;
-			}
-			break;
-		case 9:
-			if (!collision(Layer2, Layer3, -vel, 1))
-			{
-				playerPos.y -= vel;
-			}
-			break;
+			case 6:
+				if (!collision(Layer2, Layer3, vel, 0))
+				{
+					playerPos.x += vel;
+				}
+				break;
+			case 7:
+				if (!collision(Layer2, Layer3, -vel, 0))
+				{
+					playerPos.x -= vel;
+				}
+				break;
+			case 8:
+				if (!collision(Layer2, Layer3, vel, 1))
+				{
+					playerPos.y += vel;
+				}
+				break;
+			case 9:
+				if (!collision(Layer2, Layer3, -vel, 1))
+				{
+					playerPos.y -= vel;
+				}
+				break;
+			}*/
 		}
 	}
 }

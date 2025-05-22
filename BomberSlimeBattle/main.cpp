@@ -5,6 +5,7 @@
 #include "Highscore.h"
 #include "Jugador.h"
 #include "Thread.h"
+#include "Gusano.h"
 
 #define FPS 60
 unsigned int lastTime = 0, currentTime, deltaTime;
@@ -13,11 +14,15 @@ float msFrame = 1 / (FPS / 1000.0f);
 
 ResourceManager* rm = ResourceManager::getInstance();
 Video* video = Video::getInstance();
+Input* input = Input::getInstanceI();
 
 Jugador pj1;
 Jugador pj2;
 Jugador pj3;
 Jugador pj4;
+
+Gusano gus;
+
 Highscore hs;
 //Mapa* map;
 
@@ -67,6 +72,7 @@ void Player4(void* _param)
 int main(int argc, char* args[])
 {
 	Mapa* map = new Mapa();
+	lastTime = SDL_GetTicks();
 
 	//Load Images
 	map->loadMap("Assets\\mapa3.tmx", "Assets\\tileset.png");
@@ -76,10 +82,14 @@ int main(int argc, char* args[])
 	pj3.loadSprite("Assets\\slime rosa.png");
 	pj4.loadSprite("Assets\\slime blanco.png");
 
+	gus.loadSprite("Assets\\gusano_izquierda.png");
+
 	pj1.init(32, 1);
 	pj2.init(32, 2);
 	pj3.init(32, 3);
 	pj4.init(32, 4);
+
+	gus.init(32);
 
 	/*myThread[0] = new Thread(Player1);
 	myThread[1] = new Thread(Player2);
@@ -93,16 +103,23 @@ int main(int argc, char* args[])
 	
 	while (true)
 	{
+		currentTime = SDL_GetTicks();           // Tiempo actual en ms
+		deltaTime = currentTime - lastTime;        // Tiempo que pasó desde el último frame
+
+		if (deltaTime < msFrame)
+		{
+			video->waitTime(msFrame - deltaTime);          // Esperar el tiempo restante para mantener la tasa de frames
+			currentTime = SDL_GetTicks();                   // Actualizar el tiempo actual después de esperar
+		}
+
+		lastTime = currentTime;
+		input->UpdateInput();
+		
 		video->clearScreen();
 
 		//Update Characters
-		int key = pj1.checkKey();
-		pj1.update(map->getLayer2(), map->getLayer3(), key);
-		pj2.update(map->getLayer2(), map->getLayer3(), key);
-		int p3 = pj1.checkKey();
-		pj3.update(map->getLayer2(), map->getLayer3(), p3);
-		int p4 = pj1.checkKey();
-		pj4.update(map->getLayer2(), map->getLayer3(), p4);
+		pj1.update(map->getLayer2(), map->getLayer3(), deltaTime);
+		pj2.update(map->getLayer2(), map->getLayer3(), deltaTime);
 
 		//Update Bombs
 		pj1.updateBombs(map->getLayer3(), map->getWidth(), map->getHeight());
@@ -115,10 +132,11 @@ int main(int argc, char* args[])
 		pj4.render();
 
 		pj1.renderBombs();
+		gus.render();
 
 		//Update Screen
 		video->updateScreen();
-
+		
 	}
 
 	//hs.doHighScore();
