@@ -77,18 +77,6 @@ int Mapa::loadMap(const char * filename, const char * imagename)
 		layer = layer->NextSiblingElement("layer");
 	}
 
-	/*int j = 0;
-	for (size_t i = 0; i < Layers->size(); i++)
-	{
-		std::cout << Layers->at(i) << ",";
-		j++;
-		if (j == _width)
-		{
-			std::cout << std::endl;
-			j = 0;
-		}
-	}*/
-
 	/*saveBinary();
 	readBinary("example.bin");*/
 
@@ -110,6 +98,7 @@ void Mapa::render()
 			for (size_t j = 0; j < _width; j++)
 			{
 				_id = Layers[y].at(count) - 1;
+				//std::cout << _id << std::endl;
 
 				if (_id >= 0)
 				{
@@ -157,9 +146,9 @@ void Mapa::readBinary(const char* filename)
 	file.read(reinterpret_cast<char*>(&_width), sizeof(unsigned short int));
 	file.read(reinterpret_cast<char*>(&_height), sizeof(unsigned short int));
 
-	for (size_t j = 0; j < NUM_CAPAS; j++)
+	for (int j = 0; j < NUM_CAPAS; j++)
 	{
-		for (size_t i = 0; i < Layers[j].size(); i++)
+		for (int i = 0; i < Layers[j].size(); i++)
 		{
 			int layerValue;
 			file.read(reinterpret_cast<char*>(&layerValue), sizeof(unsigned short int));
@@ -178,4 +167,3 @@ void Mapa::readBinary(const char* filename)
 
 	file.close();
 }
-

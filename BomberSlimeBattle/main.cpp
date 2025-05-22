@@ -4,7 +4,6 @@
 #include "mapa.h"
 #include "Highscore.h"
 #include "Jugador.h"
-#include "Thread.h"
 
 #define FPS 60
 unsigned int lastTime = 0, currentTime, deltaTime;

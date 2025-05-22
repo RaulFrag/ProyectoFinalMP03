@@ -112,7 +112,6 @@ void Jugador::init(int tile, int id)
 	case 2:
 		playerPos.x = tile * 17;
 		playerPos.y = tile * 17;
-		
 		break;
 	default:
 		break;
