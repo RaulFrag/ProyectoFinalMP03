@@ -91,9 +91,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <CopyFileToFolders Include="Assets\expl_11_0007.png">
-      <Filter>Resource Files\Assets</Filter>
-    </CopyFileToFolders>
     <CopyFileToFolders Include="Assets\mapa1.tiled-project">
       <Filter>Resource Files\Assets</Filter>
     </CopyFileToFolders>
@@ -172,5 +169,10 @@
     <CopyFileToFolders Include="SDL2_mixer.dll">
       <Filter>Resource Files\dll</Filter>
     </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Assets\bomba.png">
+      <Filter>Resource Files\Assets</Filter>
+    </Image>
   </ItemGroup>
 </Project>

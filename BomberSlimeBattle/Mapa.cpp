@@ -90,12 +90,12 @@ void Mapa::render()
 	int _spriteY = 0;
 	int _id = 0;
 
-	for (size_t y = 0; y < NUM_CAPAS; y++)
+	for (int y = 0; y < NUM_CAPAS; y++)
 	{
 		count = 0;
-		for (size_t i = 0; i < _height; i++)
+		for (int i = 0; i < _height; i++)
 		{
-			for (size_t j = 0; j < _width; j++)
+			for (int j = 0; j < _width; j++)
 			{
 				_id = Layers[y].at(count) - 1;
 				//std::cout << _id << std::endl;
