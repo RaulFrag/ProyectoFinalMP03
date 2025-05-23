@@ -44,7 +44,7 @@ public:
 
 	void setRenderInitX(int value) { _CameraX = value; };
 
-	std::vector <int> getLayer2() { return Layers[1]; };
-	std::vector <int> getLayer3() { return Layers[2]; };
+	std::vector <int>& getLayer2() { return Layers[1]; };
+	std::vector <int>& getLayer3() { return Layers[2]; };
 };
 

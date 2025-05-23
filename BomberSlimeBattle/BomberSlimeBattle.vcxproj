@@ -159,7 +159,6 @@
     <ClCompile Include="Mapa.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
     <ClCompile Include="Sound.cpp" />
-    <ClCompile Include="Thread.cpp" />
     <ClCompile Include="Tiles.cpp" />
     <ClCompile Include="tinyxml2.cpp" />
     <ClCompile Include="Video.cpp" />
@@ -172,7 +171,6 @@
     <ClInclude Include="Mapa.h" />
     <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="Sound.h" />
-    <ClInclude Include="Thread.h" />
     <ClInclude Include="Tiles.h" />
     <ClInclude Include="tinyxml2.h" />
     <ClInclude Include="Types.h" />

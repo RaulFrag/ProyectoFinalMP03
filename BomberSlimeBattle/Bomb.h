@@ -1,7 +1,6 @@
 #pragma once
 
 #include <vector>
-#include "Mapa.h"
 #include "ResourceManager.h"
 #include "Video.h"
 
@@ -17,10 +16,10 @@ private:
     ResourceManager* rm = ResourceManager::getInstance();
     Video* vid = Video::getInstance();
 
-    int bombaId;
+    int bombIMG;
 
 public:
-    Bomb(int _x, int _y, int _tileSize, int tiempoInicial);
+    Bomb(int _x, int _y, int _tileW, int _tileH);
 
     void update(std::vector<int>& layer3, int mapWidth, int mapHeight);
     void render();

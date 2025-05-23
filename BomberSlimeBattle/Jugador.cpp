@@ -5,6 +5,8 @@
 Jugador::Jugador()
 {
 	playerId = 0;
+	alive = true;
+
 
 	playerSprite.x = 0;
 	playerSprite.y = 0;
@@ -64,7 +66,7 @@ int Jugador::checkKey()
 			case SDL_SCANCODE_UP:
 				return 4;
 				break;
-			case SDL_SCANCODE_F:
+			case SDL_SCANCODE_RSHIFT:
 				return 5;
 				break;
 			case SDL_SCANCODE_D:
@@ -78,6 +80,9 @@ int Jugador::checkKey()
 				break;
 			case SDL_SCANCODE_W:
 				return 9;
+				break;
+			case SDL_SCANCODE_F:
+				return 10;
 				break;
 			default:
 				return 0;
@@ -105,14 +110,6 @@ void Jugador::init(int tile, int id)
 		playerPos.y = tile * 2;
 		break;
 	case 2:
-		playerPos.x = tile * 17;
-		playerPos.y = tile * 2;
-		break;
-	case 3:
-		playerPos.x = tile * 2;
-		playerPos.y = tile * 17;
-		break;
-	case 4:
 		playerPos.x = tile * 17;
 		playerPos.y = tile * 17;
 		break;
@@ -161,6 +158,8 @@ void Jugador::update(std::vector <int> Layer2, std::vector <int> Layer3, int key
 		case 5:
 			placeBomb();
 			break;
+		default:
+			break;
 		}
 
 	}
@@ -196,6 +195,11 @@ void Jugador::update(std::vector <int> Layer2, std::vector <int> Layer3, int key
 				playerPos.y -= vel;
 			}
 			break;
+		case 10:
+			placeBomb();
+			break;
+		default:
+			break;
 		}
 	}
 }
@@ -207,17 +211,20 @@ void Jugador::render()
 
 void Jugador::placeBomb()
 {
-	bombas.emplace_back(playerPos.x, playerPos.y, playerSprite.w, 90);
+	int tileX = (playerPos.x / playerSprite.w) * playerSprite.w;
+	int tileY = (playerPos.y / playerSprite.h) * playerSprite.h;
+
+	bombas.emplace_back(tileX, tileY, playerSprite.w, playerSprite.h);
 }
 
-void Jugador::updateBombs(std::vector<int> layer3, int mapWidth, int mapHeight)
+void Jugador::updateBombs(std::vector<int>& layer3, int mapWidth, int mapHeight)
 {
 	for (auto& bomba : bombas)
 	{
 		bomba.update(layer3, mapWidth, mapHeight);
 	}
 
-	bombas.erase(std::remove_if(bombas.begin(), bombas.end(), 
+	bombas.erase(std::remove_if(bombas.begin(), bombas.end(),
 		[](Bomb& b) { return b.isExplotada(); }), bombas.end());
 }
 

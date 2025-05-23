@@ -1,4 +1,3 @@
-#pragma once
 #include "ResourceManager.h"
 #include "Video.h"
 #include "Bomb.h"
@@ -11,6 +10,7 @@ class Jugador
 	SDL_Rect playerPos, playerSprite;
 
 	int playerId;
+	bool alive;
 
 	bool collision(std::vector <int> Layer2, std::vector <int> Layer3, int val, int xy);
 
@@ -30,6 +30,6 @@ public:
 	void render();
 
 	void placeBomb();
-	void updateBombs(std::vector<int> layer3, int mapWidth, int mapHeight);
+	void updateBombs(std::vector<int>& layer3, int mapWidth, int mapHeight);
 	void renderBombs();
 };
