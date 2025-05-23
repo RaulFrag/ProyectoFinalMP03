@@ -1,19 +1,9 @@
 ﻿  Bomb.cpp
-  Highscore.cpp
-C:\Users\damviod\Desktop\ProyectoFinalMP03 - copia\BomberSlimeBattle\Highscore.cpp(62,12): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
   Input.cpp
   Jugador.cpp
   main.cpp
   Mapa.cpp
-C:\Users\damviod\Desktop\ProyectoFinalMP03 - copia\BomberSlimeBattle\Mapa.cpp(111,62): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\damviod\Desktop\ProyectoFinalMP03 - copia\BomberSlimeBattle\Mapa.cpp(111,45): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-  ResourceManager.cpp
-C:\Users\damviod\Desktop\ProyectoFinalMP03 - copia\BomberSlimeBattle\ResourceManager.cpp(130,32): warning C4267: 'return': conversion from 'size_t' to 'Sint32', possible loss of data
-  Sound.cpp
-C:\Users\damviod\Desktop\ProyectoFinalMP03 - copia\BomberSlimeBattle\Sound.cpp(65,30): warning C4267: 'return': conversion from 'size_t' to 'Sint32', possible loss of data
-  Tiles.cpp
-  tinyxml2.cpp
-  Video.cpp
+C:\Users\damviod\Desktop\ProyectoFinalMP03\BomberSlimeBattle\Mapa.cpp(111,62): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\damviod\Desktop\ProyectoFinalMP03\BomberSlimeBattle\Mapa.cpp(111,45): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
   Generating Code...
-C:\Users\damviod\Desktop\ProyectoFinalMP03 - copia\BomberSlimeBattle\ResourceManager.cpp(78): warning C4715: 'ResourceManager::getGraphicByID': not all control paths return a value
-  BomberSlimeBattle.vcxproj -> C:\Users\damviod\Desktop\ProyectoFinalMP03 - copia\BomberSlimeBattle\x64\Debug\BomberSlimeBattle.exe
+C:\Users\damviod\Desktop\ProyectoFinalMP03\BomberSlimeBattle\main.cpp : fatal  error C1090: PDB API call failed, error code '3': C:\Users\damviod\Desktop\ProyectoFinalMP03\BomberSlimeBattle\BomberSl.e37de56c\x64\Debug\vc143.pdb
