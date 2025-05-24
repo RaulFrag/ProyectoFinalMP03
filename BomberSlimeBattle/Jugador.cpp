@@ -224,7 +224,7 @@ void Jugador::placeBomb()
 	int tileX = (playerPos.x / playerSprite.w) * playerSprite.w;
 	int tileY = (playerPos.y / playerSprite.h) * playerSprite.h;
 
-	bombas.emplace_back(tileX, tileY, playerSprite.w);
+	bombas.emplace_back(tileX, tileY, playerSprite.w, playerSprite.h);
 }
 
 void Jugador::updateBombs(std::vector<int>& layer3, int mapWidth, int mapHeight)

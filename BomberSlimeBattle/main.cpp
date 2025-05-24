@@ -4,6 +4,7 @@
 #include "mapa.h"
 #include "Highscore.h"
 #include "Jugador.h"
+#include "Input.h"
 
 #define FPS 60
 unsigned int lastTime = 0, currentTime, deltaTime;
@@ -12,6 +13,7 @@ float msFrame = 1 / (FPS / 1000.0f);
 
 ResourceManager* rm = ResourceManager::getInstance();
 Video* video = Video::getInstance();
+Input* input = Input::getInstanceI();
 
 Jugador pj1;
 Jugador pj2;
@@ -35,6 +37,18 @@ int main(int argc, char* args[])
 	bool exitgame = false;
 	while (!exitgame)
 	{
+		currentTime = SDL_GetTicks();           // Tiempo actual en ms
+		deltaTime = currentTime - lastTime;        // Tiempo que pasó desde el último frame
+
+		if (deltaTime < msFrame)
+		{
+			video->waitTime(msFrame - deltaTime);          // Esperar el tiempo restante para mantener la tasa de frames
+			currentTime = SDL_GetTicks();                   // Actualizar el tiempo actual después de esperar
+		}
+
+		lastTime = currentTime;
+		input->UpdateInput();
+
 		video->clearScreen();
 
 		if (gamestate == 0)
@@ -50,8 +64,8 @@ int main(int argc, char* args[])
 
 			//Update Characters
 			int key = pj1.checkKey();
-			pj1.update(map->getLayer2(), map->getLayer3(), key);
-			pj2.update(map->getLayer2(), map->getLayer3(), key);
+			pj1.update(map->getLayer2(), map->getLayer3(), currentTime);
+			pj2.update(map->getLayer2(), map->getLayer3(), currentTime);
 
 			//Update Bombs
 			pj1.updateBombs(map->getLayer3(), map->getWidth(), map->getHeight());
