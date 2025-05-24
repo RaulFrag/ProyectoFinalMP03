@@ -129,9 +129,9 @@ void Jugador::loadSprite(std::string file)
 	playerId = rm->loadAndGetGraphicID(file.c_str());
 }
 
-void Jugador::update(std::vector <int> Layer2, std::vector <int> Layer3, int deltaTime/*, int key*/)
+void Jugador::update(std::vector<int> Layer2, std::vector<int> Layer3, int currentTime)
 {
-	if (deltaTime >= 150)
+	if (currentTime - lastMoveTime >= moveCooldown)
 	{
 		if (playerId == 1)
 		{
@@ -140,6 +140,7 @@ void Jugador::update(std::vector <int> Layer2, std::vector <int> Layer3, int del
 				if (!collision(Layer2, Layer3, vel, 0))
 				{
 					playerPos.x += vel;
+					lastMoveTime = currentTime;
 				}
 			}
 			else if (key->getKeyPressed(Ti_Left) == true)
@@ -147,6 +148,7 @@ void Jugador::update(std::vector <int> Layer2, std::vector <int> Layer3, int del
 				if (!collision(Layer2, Layer3, -vel, 0))
 				{
 					playerPos.x -= vel;
+					lastMoveTime = currentTime;
 				}
 			}
 			else if (key->getKeyPressed(Ti_Down) == true)
@@ -154,6 +156,7 @@ void Jugador::update(std::vector <int> Layer2, std::vector <int> Layer3, int del
 				if (!collision(Layer2, Layer3, vel, 1))
 				{
 					playerPos.y += vel;
+					lastMoveTime = currentTime;
 				}
 			}
 			else if (key->getKeyPressed(Ti_Up) == true)
@@ -161,46 +164,52 @@ void Jugador::update(std::vector <int> Layer2, std::vector <int> Layer3, int del
 				if (!collision(Layer2, Layer3, -vel, 1))
 				{
 					playerPos.y -= vel;
+					lastMoveTime = currentTime;
 				}
 			}
-			else if (key->getKeyPressed(Ti_F) == true)
+			else if (key->getKeyPressed(Ti_RShift) == true)
 			{
 				placeBomb();
 			}
 		}
 		else if (playerId == 2)
 		{
-			/*if (key != 0)
+			if (key->getKeyPressed(Ti_D) == true)
 			{
-				std::cout << playerId << ": " << key << std::endl;
-			}
-			switch (key)
-			{
-			case 6:
 				if (!collision(Layer2, Layer3, vel, 0))
 				{
 					playerPos.x += vel;
+					lastMoveTime = currentTime;
 				}
-				break;
-			case 7:
+			}
+			else if (key->getKeyPressed(Ti_A) == true)
+			{
 				if (!collision(Layer2, Layer3, -vel, 0))
 				{
 					playerPos.x -= vel;
+					lastMoveTime = currentTime;
 				}
-				break;
-			case 8:
+			}
+			else if (key->getKeyPressed(Ti_S) == true)
+			{
 				if (!collision(Layer2, Layer3, vel, 1))
 				{
 					playerPos.y += vel;
+					lastMoveTime = currentTime;
 				}
-				break;
-			case 9:
+			}
+			else if (key->getKeyPressed(Ti_W) == true)
+			{
 				if (!collision(Layer2, Layer3, -vel, 1))
 				{
 					playerPos.y -= vel;
+					lastMoveTime = currentTime;
 				}
-				break;
-			}*/
+			}
+			else if (key->getKeyPressed(Ti_F) == true)
+			{
+				placeBomb();
+			}
 		}
 	}
 }

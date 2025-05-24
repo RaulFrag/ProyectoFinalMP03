@@ -118,8 +118,8 @@ int main(int argc, char* args[])
 		video->clearScreen();
 
 		//Update Characters
-		pj1.update(map->getLayer2(), map->getLayer3(), deltaTime);
-		pj2.update(map->getLayer2(), map->getLayer3(), deltaTime);
+		pj1.update(map->getLayer2(), map->getLayer3(), currentTime);
+		pj2.update(map->getLayer2(), map->getLayer3(), currentTime);
 
 		//Update Bombs
 		pj1.updateBombs(map->getLayer3(), map->getWidth(), map->getHeight());

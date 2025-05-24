@@ -15,6 +15,9 @@ class Jugador
 	int playerId;
 	int vel;
 
+	int lastMoveTime = 0;
+	int moveCooldown = 150;
+
 	bool collision(std::vector <int> Layer2, std::vector <int> Layer3, int val, int xy);
 
 	std::vector<Bomb> bombas;
@@ -27,7 +30,7 @@ public:
 
 	void init(int tile, int id);
 	void loadSprite(std::string file);
-	void update(std::vector <int> Layer2, std::vector <int> Layer3, int deltaTime/*, int key*/);
+	void update(std::vector <int> Layer2, std::vector <int> Layer3, int currentTime/*, int key*/);
 	void render();
 
 	void placeBomb();
