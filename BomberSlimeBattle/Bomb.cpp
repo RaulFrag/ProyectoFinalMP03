@@ -3,9 +3,9 @@
 
 Bomb::Bomb(int _x, int _y, int _tileSize)
 {
-    x = _x / _tileSize * _tileSize;
-    y = _y / _tileSize * _tileSize;
-    tileSize = _tileSize;
+    x = _x / _tileW * _tileH;
+    y = _y / _tileW * _tileH;
+    tileSize = _tileW;
     tiempo = 100;
     activa = true;
     explotada = false;
@@ -40,7 +40,7 @@ void Bomb::update(std::vector<int>& layer3, int mapWidth, int mapHeight)
                 if (layer3[i] == 19)
                 {
                     layer3[i] = 0;
-                    std::cout << "Celda destruida en: " << pos[0] << "," << pos[1] << std::endl;
+                    std::cout << "Bloque destruida en: " << pos[0] << "," << pos[1] << std::endl;
                 }
             }
         }

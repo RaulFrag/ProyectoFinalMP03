@@ -24,9 +24,23 @@ Mapa::~Mapa()
 {
 }
 
+void Mapa::removeMap()
+{
+	for (int i = 0; i < NUM_CAPAS; ++i) {
+		Layers[i].clear();
+	}
+	_width = 0;
+	_height = 0;
+	_tileWidth = 0;
+	_tileHeight = 0;
+	tilemap = 0;
+}
+
 int Mapa::loadMap(const char * filename, const char * imagename)
 {
 	using namespace tinyxml2;
+
+	removeMap();
 
 	XMLDocument doc;
 	if (doc.LoadFile(filename) != XML_SUCCESS)

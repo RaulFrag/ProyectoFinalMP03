@@ -124,6 +124,16 @@ Sint32 ResourceManager::addGraphic(const char* file)
 		std::cout << SDL_GetError();
 		return -1;
 	}
+	if (texture == nullptr) {
+		std::cout << "SDL_CreateTextureFromSurface error: " << SDL_GetError() << std::endl;
+		return -1;
+	}
+
+	Uint32 index = updateFirstFreeSlotGraphic();
+
+	if (index < mGraphicsVector.size()) {
+		mGraphicsVector[index] = texture;
+	}
 	else
 	{
 		mGraphicsVector.push_back(texture);
@@ -133,20 +143,10 @@ Sint32 ResourceManager::addGraphic(const char* file)
 
 Uint32 ResourceManager::updateFirstFreeSlotGraphic()
 {
-	int max = 0;
-	if (mGraphicsVector.size() >= 1)
-	{
-		do
-		{
-			if (mGraphicsVector[max] == nullptr)
-			{
-				break;
-			}
-			else
-			{
-				max++;
-			}
-		} while (max != mGraphicsVector.size());
+	for (Uint32 i = 0; i < mGraphicsVector.size(); ++i) {
+		if (mGraphicsVector[i] == nullptr) {
+			return i;
+		}
 	}
-	return max;
+	return mGraphicsVector.size();
 }
