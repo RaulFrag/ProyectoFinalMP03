@@ -1,7 +1,7 @@
 #include "Bomb.h"
 #include <iostream>
 
-Bomb::Bomb(int _x, int _y, int _tileSize)
+Bomb::Bomb(int _x, int _y, int _tileW, int _tileH)
 {
     x = _x / _tileW * _tileH;
     y = _y / _tileW * _tileH;
@@ -15,13 +15,11 @@ Bomb::Bomb(int _x, int _y, int _tileSize)
 
 void Bomb::update(std::vector<int>& layer3, int mapWidth, int mapHeight)
 {
-    if (!activa) return;
-
     tiempo--;
     if (tiempo <= 0 && !explotada)
     {
-        int cx = x / tileSize;
-        int cy = y / tileSize;
+        int cx = x / 32;
+        int cy = y / 32;
 
         int indices[5][2] = {
             {cx, cy},        // Centro

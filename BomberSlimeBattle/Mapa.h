@@ -44,9 +44,9 @@ public:
 
 	void setRenderInitX(int value) { _CameraX = value; };
 
+	void removeMap();
+
 	std::vector <int>& getLayer2() { return Layers[1]; };
 	std::vector <int>& getLayer3() { return Layers[2]; };
-	
-	void setLayer3(std::vector <int> Layer3);
 };
 

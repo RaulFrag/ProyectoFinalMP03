@@ -19,7 +19,7 @@ private:
     int bombIMG;
 
 public:
-    Bomb(int _x, int _y, int _tileSize);
+    Bomb(int _x, int _y, int _tileW, int _tileH);
 
     void update(std::vector<int>& layer3, int mapWidth, int mapHeight);
     void render();
