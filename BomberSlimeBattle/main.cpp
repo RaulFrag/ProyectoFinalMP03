@@ -5,6 +5,7 @@
 #include "Highscore.h"
 #include "Jugador.h"
 #include "Input.h"
+#include "Gusano.h"
 
 #define FPS 60
 unsigned int lastTime = 0, currentTime, deltaTime;
@@ -17,6 +18,9 @@ Input* input = Input::getInstanceI();
 
 Jugador pj1;
 Jugador pj2;
+
+Gusano gusano;
+
 Highscore hs;
 
 
@@ -30,6 +34,7 @@ int main(int argc, char* args[])
 
 	pj1.loadSprite("Assets\\slime naranja.png");
 	pj2.loadSprite("Assets\\slime verde.png");
+	gusano.loadSprite("Assets\\gusano_izquierda.png");
 
 	
 	int playersAlive = 0;
@@ -55,6 +60,7 @@ int main(int argc, char* args[])
 		{
 			pj1.init(32, 1);
 			pj2.init(32, 2);
+			gusano.init(32);
 			gamestate = 1;
 		}
 		if (gamestate == 1)
@@ -63,9 +69,11 @@ int main(int argc, char* args[])
 
 
 			//Update Characters
-			int key = pj1.checkKey();
 			pj1.update(map->getLayer2(), map->getLayer3(), currentTime);
 			pj2.update(map->getLayer2(), map->getLayer3(), currentTime);
+
+			//Update AI
+			gusano.update(map->getLayer2(), 20, 20, pj1.getTilePos());
 
 			//Update Bombs
 			pj1.updateBombs(map->getLayer3(), map->getWidth(), map->getHeight());
@@ -77,6 +85,8 @@ int main(int argc, char* args[])
 			pj2.render();
 			pj1.renderBombs();
 			pj2.renderBombs();
+
+			gusano.render();
 
 		}
 		if (gamestate == 2)

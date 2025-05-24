@@ -1,2 +1,5 @@
-﻿  Jugador.cpp
+﻿  Gusano.cpp
+  main.cpp
+F:\DAM 2\Programacio 2\ProyectoFinalMP03\BomberSlimeBattle\main.cpp(50,28): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+  Generando código...
   BomberSlimeBattle.vcxproj -> F:\DAM 2\Programacio 2\ProyectoFinalMP03\BomberSlimeBattle\x64\Debug\BomberSlimeBattle.exe

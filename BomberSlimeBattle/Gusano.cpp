@@ -1,4 +1,5 @@
 #include "Gusano.h"
+#include "Astar.h"
 
 Gusano::Gusano()
 {
@@ -35,8 +36,28 @@ void Gusano::loadSprite(std::string file)
 	gusId = rm->loadAndGetGraphicID(file.c_str());
 }
 
-void Gusano::update()
+void Gusano::update(const std::vector<int>& map, int mapWidth, int mapHeight, std::pair<int, int> target)
 {
+    int tileX = gusPos.x / gusSprite.w;
+    int tileY = gusPos.y / gusSprite.h;
+
+    if (currentPath.empty() || currentPathIndex >= currentPath.size()) {
+        Astar astar(mapWidth, mapHeight, map);
+        currentPath = astar.findPath({ tileX, tileY }, target);
+        currentPathIndex = 0;
+    }
+
+    int now = SDL_GetTicks();
+    if (now - lastMoveTime < moveDelay) return;
+
+    if (!currentPath.empty() && currentPathIndex < currentPath.size()) {
+        auto next = currentPath[currentPathIndex];
+        gusPos.x = next.first * gusSprite.w;
+        gusPos.y = next.second * gusSprite.h;
+
+        currentPathIndex++;
+        lastMoveTime = now;
+    }
 }
 
 void Gusano::render()

@@ -151,6 +151,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Astar.cpp" />
     <ClCompile Include="Bomb.cpp" />
     <ClCompile Include="Gusano.cpp" />
     <ClCompile Include="Highscore.cpp" />
@@ -166,6 +167,7 @@
     <ClCompile Include="Video.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Astar.h" />
     <ClInclude Include="Bomb.h" />
     <ClInclude Include="Gusano.h" />
     <ClInclude Include="Highscore.h" />

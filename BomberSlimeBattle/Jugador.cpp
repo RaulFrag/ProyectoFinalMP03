@@ -42,58 +42,6 @@ bool Jugador::collision(std::vector<int> Layer2, std::vector<int> Layer3, int va
 	return true;
 }
 
-int Jugador::checkKey()
-{
-	key->UpdateInput();
-	/*SDL_Event key_event;
-	if (SDL_PollEvent(&key_event) != 0)
-	{
-		switch (key_event.key.type)
-		{
-		case SDL_KEYDOWN:
-			switch (key_event.key.keysym.scancode)
-			{
-			case SDL_SCANCODE_RIGHT:
-				return 1;
-				break;
-			case SDL_SCANCODE_LEFT:
-				return 2;
-				break;
-			case SDL_SCANCODE_DOWN:
-				return 3;
-				break;
-			case SDL_SCANCODE_UP:
-				return 4;
-				break;
-			case SDL_SCANCODE_F:
-				return 5;
-				break;
-			case SDL_SCANCODE_D:
-				return 6;
-				break;
-			case SDL_SCANCODE_A:
-				return 7;
-				break;
-			case SDL_SCANCODE_S:
-				return 8;
-				break;
-			case SDL_SCANCODE_W:
-				return 9;
-				break;
-			default:
-				return 0;
-				break;
-			}
-			break;
-		default:
-			return 0;
-			break;
-		}
-	}*/
-	return 0;
-}
-
-
 void Jugador::init(int tile, int id)
 {
 	playerSprite.h = tile;

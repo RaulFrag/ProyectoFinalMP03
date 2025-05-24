@@ -26,8 +26,6 @@ public:
 	Jugador();
 	~Jugador();
 
-	int checkKey();
-
 	void init(int tile, int id);
 	void loadSprite(std::string file);
 	void update(std::vector <int> Layer2, std::vector <int> Layer3, int currentTime/*, int key*/);
@@ -36,4 +34,6 @@ public:
 	void placeBomb();
 	void updateBombs(std::vector<int>& layer3, int mapWidth, int mapHeight);
 	void renderBombs();
+
+	std::pair<int, int> getTilePos() const { return { playerPos.x / 20, playerPos.y / 20 }; }
 };

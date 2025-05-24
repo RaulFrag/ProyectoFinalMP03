@@ -11,13 +11,18 @@ class Gusano
 	int gusId;
 	int vel;
 
+	std::vector<std::pair<int, int>> currentPath;
+	int currentPathIndex = 0;
+	int lastMoveTime = 0;
+	int moveDelay = 1000;
+
 public:
 	Gusano();
 	~Gusano();
 
 	void init(int tile);
 	void loadSprite(std::string file);
-	void update();
+	void update(const std::vector<int>& map, int mapWidth, int mapHeight, std::pair<int, int> target);
 	void render();
 };
 
