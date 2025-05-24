@@ -23,6 +23,7 @@ int main(int argc, char* args[])
 	Mapa* map = new Mapa();
 
 	//Load Images
+	
 	map->loadMap("Assets\\mapa1.tmx", "Assets\\tileset.png");
 
 	pj1.loadSprite("Assets\\slime naranja.png");
@@ -45,6 +46,7 @@ int main(int argc, char* args[])
 		if (gamestate == 1)
 		{
 			playersAlive = 2;
+
 
 			//Update Characters
 			int key = pj1.checkKey();

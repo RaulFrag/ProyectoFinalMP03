@@ -1,9 +1,2 @@
-﻿  Bomb.cpp
-  Input.cpp
-  Jugador.cpp
-  main.cpp
-  Mapa.cpp
-C:\Users\damviod\Desktop\ProyectoFinalMP03\BomberSlimeBattle\Mapa.cpp(111,62): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\damviod\Desktop\ProyectoFinalMP03\BomberSlimeBattle\Mapa.cpp(111,45): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-  Generating Code...
-C:\Users\damviod\Desktop\ProyectoFinalMP03\BomberSlimeBattle\main.cpp : fatal  error C1090: PDB API call failed, error code '3': C:\Users\damviod\Desktop\ProyectoFinalMP03\BomberSlimeBattle\BomberSl.e37de56c\x64\Debug\vc143.pdb
+﻿  main.cpp
+  BomberSlimeBattle.vcxproj -> C:\Users\raulf\OneDrive\Escritorio\ProyectoFinalMP03\BomberSlimeBattle\x64\Debug\BomberSlimeBattle.exe
