@@ -54,6 +54,9 @@
     <ClCompile Include="Bomb.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Menu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Video.h">
@@ -89,11 +92,11 @@
     <ClInclude Include="Bomb.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Menu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <CopyFileToFolders Include="Assets\expl_11_0007.png">
-      <Filter>Resource Files\Assets</Filter>
-    </CopyFileToFolders>
     <CopyFileToFolders Include="Assets\mapa1.tiled-project">
       <Filter>Resource Files\Assets</Filter>
     </CopyFileToFolders>
@@ -172,5 +175,31 @@
     <CopyFileToFolders Include="SDL2_mixer.dll">
       <Filter>Resource Files\dll</Filter>
     </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Assets\bomba.png">
+      <Filter>Resource Files\Assets</Filter>
+    </Image>
+    <Image Include="Assets\backgroundMenu.jpg">
+      <Filter>Resource Files\Assets</Filter>
+    </Image>
+    <Image Include="Assets\playButton.png">
+      <Filter>Resource Files\Assets</Filter>
+    </Image>
+    <Image Include="Assets\exitButton.png">
+      <Filter>Resource Files\Assets</Filter>
+    </Image>
+    <Image Include="Assets\changeMapButton.png">
+      <Filter>Resource Files\Assets</Filter>
+    </Image>
+    <Image Include="Assets\numOne.png">
+      <Filter>Resource Files\Assets</Filter>
+    </Image>
+    <Image Include="Assets\numThree.png">
+      <Filter>Resource Files\Assets</Filter>
+    </Image>
+    <Image Include="Assets\numTwo.png">
+      <Filter>Resource Files\Assets</Filter>
+    </Image>
   </ItemGroup>
 </Project>

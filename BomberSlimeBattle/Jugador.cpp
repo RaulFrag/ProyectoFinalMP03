@@ -102,6 +102,7 @@ void Jugador::init(int tile, int id)
 {
 	playerSprite.h = tile;
 	playerSprite.w = tile;
+	playerId = id;
 
 	switch (id)
 	{
@@ -122,7 +123,7 @@ void Jugador::init(int tile, int id)
 
 void Jugador::loadSprite(std::string file)
 {
-	playerId = rm->loadAndGetGraphicID(file.c_str());
+	playerGraphicID = rm->loadAndGetGraphicID(file.c_str());
 }
 
 void Jugador::update(std::vector <int> Layer2, std::vector <int> Layer3, int key)
@@ -206,7 +207,7 @@ void Jugador::update(std::vector <int> Layer2, std::vector <int> Layer3, int key
 
 void Jugador::render()
 {
-	vid->renderGraphic(playerId, playerPos.x, playerPos.y, playerSprite.w, playerSprite.h, playerSprite.x, playerSprite.y);
+	vid->renderGraphic(playerGraphicID, playerPos.x, playerPos.y, playerSprite.w, playerSprite.h, playerSprite.x, playerSprite.y);
 }
 
 void Jugador::placeBomb()

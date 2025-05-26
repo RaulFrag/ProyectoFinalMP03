@@ -9,6 +9,7 @@ class Jugador
 	
 	SDL_Rect playerPos, playerSprite;
 
+	int playerGraphicID;
 	int playerId;
 	bool alive;
 
