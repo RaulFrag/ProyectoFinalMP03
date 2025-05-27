@@ -5,6 +5,8 @@
 Jugador::Jugador()
 {
 	playerId = 0;
+	playerGraphicID = 0;
+	alive = true;
 
 	playerSprite.x = 0;
 	playerSprite.y = 0;
@@ -46,6 +48,9 @@ void Jugador::init(int tile, int id)
 {
 	playerSprite.h = tile;
 	playerSprite.w = tile;
+	playerId = id;
+	alive = true;
+	bombas.clear();
 
 	switch (id)
 	{
@@ -54,14 +59,6 @@ void Jugador::init(int tile, int id)
 		playerPos.y = tile * 2;
 		break;
 	case 2:
-		playerPos.x = tile * 17;
-		playerPos.y = tile * 2;
-		break;
-	case 3:
-		playerPos.x = tile * 2;
-		playerPos.y = tile * 17;
-		break;
-	case 4:
 		playerPos.x = tile * 17;
 		playerPos.y = tile * 17;
 		break;
@@ -164,7 +161,25 @@ void Jugador::update(std::vector<int> Layer2, std::vector<int> Layer3, int curre
 
 void Jugador::render()
 {
-	vid->renderGraphic(playerId, playerPos.x, playerPos.y, playerSprite.w, playerSprite.h, playerSprite.x, playerSprite.y);
+	if (alive)
+	{
+		vid->renderGraphic(playerGraphicID, playerPos.x, playerPos.y, playerSprite.w, playerSprite.h, playerSprite.x, playerSprite.y);
+	}
+}
+
+void Jugador::checkExplosionCollision(const std::vector<Bomb>& bombas)
+{
+	for (const auto& bomba : bombas)
+	{
+		for (const auto& ex : bomba.getExplosiones())
+		{
+			if (playerPos.x / 32 == ex.x / 32 && playerPos.y / 32 == ex.y / 32)
+			{
+				alive = false;
+				return;
+			}
+		}
+	}
 }
 
 void Jugador::placeBomb()

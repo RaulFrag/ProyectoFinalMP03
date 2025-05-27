@@ -57,6 +57,12 @@
     <ClCompile Include="Menu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Gusano.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Astar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Video.h">
@@ -93,6 +99,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Menu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Gusano.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Astar.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

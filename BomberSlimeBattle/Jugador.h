@@ -12,7 +12,9 @@ class Jugador
 	
 	SDL_Rect playerPos, playerSprite;
 
+	int playerGraphicID;
 	int playerId;
+	bool alive;
 	int vel;
 
 	int lastMoveTime = 0;
@@ -31,9 +33,13 @@ public:
 	void update(std::vector <int> Layer2, std::vector <int> Layer3, int currentTime/*, int key*/);
 	void render();
 
+	void checkExplosionCollision(const std::vector<Bomb>& bombas);
+	bool isAlive() const { return alive; };
+
 	void placeBomb();
 	void updateBombs(std::vector<int>& layer3, int mapWidth, int mapHeight);
 	void renderBombs();
+	const std::vector<Bomb>& getBombas() const { return bombas; };
 
 	std::pair<int, int> getTilePos() const { return { playerPos.x / 20, playerPos.y / 20 }; }
 };

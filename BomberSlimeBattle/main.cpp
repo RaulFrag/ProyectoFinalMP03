@@ -44,13 +44,13 @@ int main(int argc, char* args[])
 	bool exitgame = false;
 	while (!exitgame)
 	{
-		currentTime = SDL_GetTicks();           // Tiempo actual en ms
-		deltaTime = currentTime - lastTime;        // Tiempo que pas� desde el �ltimo frame
+		currentTime = SDL_GetTicks();
+		deltaTime = currentTime - lastTime;
 
 		if (deltaTime < msFrame)
 		{
-			video->waitTime(msFrame - deltaTime);          // Esperar el tiempo restante para mantener la tasa de frames
-			currentTime = SDL_GetTicks();                   // Actualizar el tiempo actual despu�s de esperar
+			video->waitTime(msFrame - deltaTime);
+			currentTime = SDL_GetTicks();
 		}
 
 		lastTime = currentTime;
