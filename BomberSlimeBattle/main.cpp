@@ -4,6 +4,8 @@
 #include "mapa.h"
 #include "Highscore.h"
 #include "Jugador.h"
+#include "Input.h"
+#include "Gusano.h"
 #include "Menu.h"
 
 #define FPS 60
@@ -13,10 +15,14 @@ float msFrame = 1 / (FPS / 1000.0f);
 
 ResourceManager* rm = ResourceManager::getInstance();
 Video* video = Video::getInstance();
+Input* input = Input::getInstanceI();
 
 Menu menu;
 Jugador pj1;
 Jugador pj2;
+
+Gusano gusano;
+
 Highscore hs;
 
 
@@ -29,6 +35,8 @@ int main(int argc, char* args[])
 	//Load Images
 	pj1.loadSprite("Assets\\slime naranja.png");
 	pj2.loadSprite("Assets\\slime verde.png");
+	gusano.loadSprite("Assets\\gusano_izquierda.png");
+
 	
 	bool gameOver = false;
 	int currentMap = 1;
@@ -36,6 +44,18 @@ int main(int argc, char* args[])
 	bool exitgame = false;
 	while (!exitgame)
 	{
+		currentTime = SDL_GetTicks();
+		deltaTime = currentTime - lastTime;
+
+		if (deltaTime < msFrame)
+		{
+			video->waitTime(msFrame - deltaTime);
+			currentTime = SDL_GetTicks();
+		}
+
+		lastTime = currentTime;
+		input->UpdateInput();
+
 		video->clearScreen();
 		
 
@@ -84,9 +104,11 @@ int main(int argc, char* args[])
 		if (gamestate == 1)
 		{
 			//Update Characters
-			int key = pj1.checkKey();
-			pj1.update(map->getLayer2(), map->getLayer3(), key);
-			pj2.update(map->getLayer2(), map->getLayer3(), key);
+			pj1.update(map->getLayer2(), map->getLayer3(), currentTime);
+			pj2.update(map->getLayer2(), map->getLayer3(), currentTime);
+
+			//Update AI
+			gusano.update(map->getLayer2(), 20, 20, pj1.getTilePos());
 
 			//Update Bombs
 			pj1.updateBombs(map->getLayer3(), map->getWidth(), map->getHeight(), map->getLayer2());
@@ -109,6 +131,9 @@ int main(int argc, char* args[])
 			pj2.render();
 			pj1.renderBombs();
 			pj2.renderBombs();
+
+			gusano.render();
+
 		}
 		// -- HighScore
 		if (gamestate == 2)

@@ -151,7 +151,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Astar.cpp" />
     <ClCompile Include="Bomb.cpp" />
+    <ClCompile Include="Gusano.cpp" />
     <ClCompile Include="Highscore.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="Jugador.cpp" />
@@ -165,7 +167,9 @@
     <ClCompile Include="Video.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Astar.h" />
     <ClInclude Include="Bomb.h" />
+    <ClInclude Include="Gusano.h" />
     <ClInclude Include="Highscore.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="Jugador.h" />

@@ -181,3 +181,8 @@ void Mapa::readBinary(const char* filename)
 	file.close();
 }
 
+void Mapa::setLayer3(std::vector<int> Layer3)
+{
+	Layers[2] = Layer3;
+}
+

@@ -1,16 +1,26 @@
 #pragma once
 #include "SDL.h"
 
+enum Key_State
+{
+
+};
 enum Ti_Keys
 {
 	Ti_Space = SDL_SCANCODE_SPACE,
 	Ti_Enter = SDL_SCANCODE_RETURN,
-	Ti_Shift = SDL_SCANCODE_LSHIFT,
-	Ti_Control = SDL_SCANCODE_LCTRL,
+	Ti_LShift = SDL_SCANCODE_LSHIFT,
+	Ti_LControl = SDL_SCANCODE_LCTRL,
+	Ti_RShift = SDL_SCANCODE_RSHIFT,
+	Ti_RControl = SDL_SCANCODE_RCTRL,
 	Ti_Borrar = SDL_SCANCODE_BACKSPACE,
 	Ti_Tab = SDL_SCANCODE_TAB,
 	Ti_Alt = SDL_SCANCODE_LALT,
 	Ti_Esc = SDL_SCANCODE_ESCAPE,
+	Ti_Right = SDL_SCANCODE_RIGHT,
+	Ti_Left,
+	Ti_Down,
+	Ti_Up,
 	Ti_1 = SDL_SCANCODE_1,
 	Ti_2,
 	Ti_3,
