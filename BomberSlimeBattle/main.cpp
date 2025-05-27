@@ -83,7 +83,6 @@ int main(int argc, char* args[])
 		// -- Juego
 		if (gamestate == 1)
 		{
-			std::cout << "Cambiando gamestate a 1 (Juego)" << std::endl;
 			//Update Characters
 			int key = pj1.checkKey();
 			pj1.update(map->getLayer2(), map->getLayer3(), key);
