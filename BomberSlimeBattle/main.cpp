@@ -61,41 +61,38 @@ int main(int argc, char* args[])
 
 		// -- Menu
 		if (gamestate == 0) {
-			SDL_Event e;
-			while (SDL_PollEvent(&e)) {
-				if (e.type == SDL_QUIT) {
-					exitgame = true;
+			if (input->getKeyPressed(Ti_Esc) == true)
+			{
+				exitgame = true;
+			}
+			else if (input->getKeyPressed(Ti_Up) == true)
+			{
+				menu.update(SDLK_UP);
+			}
+			else if (input->getKeyPressed(Ti_Down) == true)
+			{
+				menu.update(SDLK_DOWN);
+			}
+			else if (input->getKeyPressed(Ti_Enter) == true)
+			{
+				int option = menu.getSelectedOption();
+				if (option == 1) {
+					std::string mapPath = "Assets/mapa" + std::to_string(currentMap) + ".tmx";
+					map->loadMap(mapPath.c_str(), "Assets/tileset.png");
+					gamestate = 1;
+					menu.resetSelection();
+					pj1.init(32, 1);
+					pj2.init(32, 2);
+					gusano.init(32);
+					gameOver = false;
 				}
-				else if (e.type == SDL_KEYDOWN) {
-					switch (e.key.keysym.sym) {
-					case SDLK_UP:
-						menu.update(SDLK_UP);
-						break;
-					case SDLK_DOWN:
-						menu.update(SDLK_DOWN);
-						break;
-					case SDLK_RETURN: {
-						int option = menu.getSelectedOption();
-						if (option == 1) {
-							std::string mapPath = "Assets/mapa" + std::to_string(currentMap) + ".tmx";
-							map->loadMap(mapPath.c_str(), "Assets/tileset.png");
-							gamestate = 1;
-							menu.resetSelection();
-							pj1.init(32, 1);
-							pj2.init(32, 2);
-							gameOver = false;
-						}
-						else if (option == 2) {
-							currentMap = (currentMap % 3) + 1;
-							menu.resetSelection();
-							menu.setCurrentMap(currentMap);
-						}
-						else if (option == 3) {
-							exitgame = true;
-						}
-						break;
-					}
-					}
+				else if (option == 2) {
+					currentMap = (currentMap % 3) + 1;
+					menu.resetSelection();
+					menu.setCurrentMap(currentMap);
+				}
+				else if (option == 3) {
+					exitgame = true;
 				}
 			}
 			menu.render();

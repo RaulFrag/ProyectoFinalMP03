@@ -109,6 +109,42 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <CopyFileToFolders Include="SDL2.dll">
+      <Filter>Resource Files\dll</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="SDL2_image.dll">
+      <Filter>Resource Files\dll</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="SDL2_mixer.dll">
+      <Filter>Resource Files\dll</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Assets\backgroundMenu.png">
+      <Filter>Resource Files\Assets</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Assets\bomba.png">
+      <Filter>Resource Files\Assets</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Assets\bombaReal.png">
+      <Filter>Resource Files\Assets</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Assets\changeMapButton.png">
+      <Filter>Resource Files\Assets</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Assets\exitButton.png">
+      <Filter>Resource Files\Assets</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Assets\gusano_abajo.png">
+      <Filter>Resource Files\Assets</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Assets\gusano_arriba.png">
+      <Filter>Resource Files\Assets</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Assets\gusano_derecha.png">
+      <Filter>Resource Files\Assets</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Assets\gusano_izquierda.png">
+      <Filter>Resource Files\Assets</Filter>
+    </CopyFileToFolders>
     <CopyFileToFolders Include="Assets\mapa1.tiled-project">
       <Filter>Resource Files\Assets</Filter>
     </CopyFileToFolders>
@@ -122,6 +158,18 @@
       <Filter>Resource Files\Assets</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="Assets\mapa3.tmx">
+      <Filter>Resource Files\Assets</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Assets\numOne.png">
+      <Filter>Resource Files\Assets</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Assets\numThree.png">
+      <Filter>Resource Files\Assets</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Assets\numTwo.png">
+      <Filter>Resource Files\Assets</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Assets\playButton.png">
       <Filter>Resource Files\Assets</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="Assets\Slime amarillo.pixil">
@@ -178,40 +226,5 @@
     <CopyFileToFolders Include="Assets\tileset.tsx">
       <Filter>Resource Files\Assets</Filter>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="SDL2.dll">
-      <Filter>Resource Files\dll</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="SDL2_image.dll">
-      <Filter>Resource Files\dll</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="SDL2_mixer.dll">
-      <Filter>Resource Files\dll</Filter>
-    </CopyFileToFolders>
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="Assets\bomba.png">
-      <Filter>Resource Files\Assets</Filter>
-    </Image>
-    <Image Include="Assets\backgroundMenu.jpg">
-      <Filter>Resource Files\Assets</Filter>
-    </Image>
-    <Image Include="Assets\playButton.png">
-      <Filter>Resource Files\Assets</Filter>
-    </Image>
-    <Image Include="Assets\exitButton.png">
-      <Filter>Resource Files\Assets</Filter>
-    </Image>
-    <Image Include="Assets\changeMapButton.png">
-      <Filter>Resource Files\Assets</Filter>
-    </Image>
-    <Image Include="Assets\numOne.png">
-      <Filter>Resource Files\Assets</Filter>
-    </Image>
-    <Image Include="Assets\numThree.png">
-      <Filter>Resource Files\Assets</Filter>
-    </Image>
-    <Image Include="Assets\numTwo.png">
-      <Filter>Resource Files\Assets</Filter>
-    </Image>
   </ItemGroup>
 </Project>

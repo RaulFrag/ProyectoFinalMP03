@@ -11,7 +11,7 @@ Menu::Menu() {
     map2ID = rm->loadAndGetGraphicID("Assets/numTwo.png");
     map3ID = rm->loadAndGetGraphicID("Assets/numThree.png");
 
-    backgroundID = rm->loadAndGetGraphicID("Assets/backgroundMenu.jpg");
+    backgroundID = rm->loadAndGetGraphicID("Assets/backgroundMenu.png");
     jugarID = rm->loadAndGetGraphicID("Assets/playButton.png");
     cambiarMapaID = rm->loadAndGetGraphicID("Assets/changeMapButton.png");
     salirID = rm->loadAndGetGraphicID("Assets/exitButton.png");

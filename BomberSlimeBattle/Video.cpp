@@ -1,4 +1,5 @@
 #include "Video.h"
+#include "iostream"
 
 Video* Video::pInstance = NULL;
 
@@ -33,8 +34,15 @@ void Video::renderGraphic(int img, int posX, int posY, int width, int height, in
     rectAux.x = spriteX;
     rectAux.y = spriteY;
 
-    SDL_Texture* texture = ResourceManager::getInstance()->getGraphicByID(img);
-    SDL_RenderCopy(gRenderer, texture, &rectAux, &r);
+    SDL_Texture* texture = nullptr;
+    texture = ResourceManager::getInstance()->getGraphicByID(img);
+
+    if (texture != nullptr) {
+        SDL_RenderCopy(gRenderer, texture, &rectAux, &r);
+    }
+    else {
+        std::cout << "[Error] renderGraphic: textura con ID " << img << " es NULL." << std::endl;
+    }
 }
 
 void Video::drawRect(int x, int y, int width, int height, Uint8 r, Uint8 g, Uint8 b)

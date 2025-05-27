@@ -71,7 +71,7 @@ void Jugador::init(int tile, int id)
 
 void Jugador::loadSprite(std::string file)
 {
-	playerId = rm->loadAndGetGraphicID(file.c_str());
+	playerGraphicID = rm->loadAndGetGraphicID(file.c_str());
 }
 
 void Jugador::update(std::vector<int> Layer2, std::vector<int> Layer3, int currentTime)
@@ -190,11 +190,11 @@ void Jugador::placeBomb()
 	bombas.emplace_back(tileX, tileY, playerSprite.w, playerSprite.h);
 }
 
-void Jugador::updateBombs(std::vector<int>& layer3, int mapWidth, int mapHeight)
+void Jugador::updateBombs(std::vector<int>& layer3, int mapWidth, int mapHeight, std::vector<int>& layer2)
 {
 	for (auto& bomba : bombas)
 	{
-		bomba.update(layer3, mapWidth, mapHeight);
+		bomba.update(layer3, mapWidth, mapHeight, layer2);
 	}
 
 	bombas.erase(std::remove_if(bombas.begin(), bombas.end(),
