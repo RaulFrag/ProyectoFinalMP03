@@ -42,7 +42,7 @@ void Bomb::update(std::vector<int>& layer3, int mapWidth, int mapHeight)
             Explosion ex;
             ex.x = pos[0] * tileSize;
             ex.y = pos[1] * tileSize;
-            ex.tiempoRestante = 3000;
+            ex.tiempoRestante = 30;
             explosiones.push_back(ex);
         }
 

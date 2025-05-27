@@ -5,8 +5,8 @@
 Jugador::Jugador()
 {
 	playerId = 0;
+	playerGraphicID = 0;
 	alive = true;
-
 
 	playerSprite.x = 0;
 	playerSprite.y = 0;
@@ -103,6 +103,8 @@ void Jugador::init(int tile, int id)
 	playerSprite.h = tile;
 	playerSprite.w = tile;
 	playerId = id;
+	alive = true;
+	bombas.clear();
 
 	switch (id)
 	{
@@ -207,7 +209,25 @@ void Jugador::update(std::vector <int> Layer2, std::vector <int> Layer3, int key
 
 void Jugador::render()
 {
-	vid->renderGraphic(playerGraphicID, playerPos.x, playerPos.y, playerSprite.w, playerSprite.h, playerSprite.x, playerSprite.y);
+	if (alive)
+	{
+		vid->renderGraphic(playerGraphicID, playerPos.x, playerPos.y, playerSprite.w, playerSprite.h, playerSprite.x, playerSprite.y);
+	}
+}
+
+void Jugador::checkExplosionCollision(const std::vector<Bomb>& bombas)
+{
+	for (const auto& bomba : bombas)
+	{
+		for (const auto& ex : bomba.getExplosiones())
+		{
+			if (playerPos.x / 32 == ex.x / 32 && playerPos.y / 32 == ex.y / 32)
+			{
+				alive = false;
+				return;
+			}
+		}
+	}
 }
 
 void Jugador::placeBomb()

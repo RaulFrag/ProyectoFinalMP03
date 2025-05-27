@@ -27,13 +27,10 @@ int main(int argc, char* args[])
 	int mapIndex = 0;
 	
 	//Load Images
-	map->loadMap("Assets\\mapa1.tmx", "Assets\\tileset.png");
-
 	pj1.loadSprite("Assets\\slime naranja.png");
 	pj2.loadSprite("Assets\\slime verde.png");
 	
-
-	int playersAlive = 0;
+	bool gameOver = false;
 	int currentMap = 1;
 	int gamestate = 0;
 	bool exitgame = false;
@@ -60,15 +57,16 @@ int main(int argc, char* args[])
 					case SDLK_RETURN: {
 						int option = menu.getSelectedOption();
 						if (option == 1) {
+							std::string mapPath = "Assets/mapa" + std::to_string(currentMap) + ".tmx";
+							map->loadMap(mapPath.c_str(), "Assets/tileset.png");
 							gamestate = 1;
 							menu.resetSelection();
 							pj1.init(32, 1);
 							pj2.init(32, 2);
+							gameOver = false;
 						}
 						else if (option == 2) {
 							currentMap = (currentMap % 3) + 1;
-							std::string mapPath = "Assets/mapa" + std::to_string(currentMap) + ".tmx";
-							map->loadMap(mapPath.c_str(), "Assets/tileset.png");
 							menu.resetSelection();
 							menu.setCurrentMap(currentMap);
 						}
@@ -85,8 +83,7 @@ int main(int argc, char* args[])
 		// -- Juego
 		if (gamestate == 1)
 		{
-			playersAlive = 2;
-
+			std::cout << "Cambiando gamestate a 1 (Juego)" << std::endl;
 			//Update Characters
 			int key = pj1.checkKey();
 			pj1.update(map->getLayer2(), map->getLayer3(), key);
@@ -95,6 +92,17 @@ int main(int argc, char* args[])
 			//Update Bombs
 			pj1.updateBombs(map->getLayer3(), map->getWidth(), map->getHeight());
 			pj2.updateBombs(map->getLayer3(), map->getWidth(), map->getHeight());
+			
+			pj1.checkExplosionCollision(pj1.getBombas());
+			pj1.checkExplosionCollision(pj2.getBombas());
+			pj2.checkExplosionCollision(pj1.getBombas());
+			pj2.checkExplosionCollision(pj2.getBombas());
+
+			if ((!pj1.isAlive() || !pj2.isAlive()) && !gameOver) 
+			{
+				gameOver = true;
+				gamestate = 2;
+			}
 
 			//Paint everything
 			map->render();
@@ -102,17 +110,15 @@ int main(int argc, char* args[])
 			pj2.render();
 			pj1.renderBombs();
 			pj2.renderBombs();
-
 		}
 		// -- HighScore
 		if (gamestate == 2)
 		{
-
+			gamestate = 0;
 		}
 
 		//Update Screen
 		video->updateScreen();
-
 	}
 
 	//hs.doHighScore();

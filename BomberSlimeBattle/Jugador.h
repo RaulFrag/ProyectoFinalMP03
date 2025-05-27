@@ -15,6 +15,7 @@ class Jugador
 
 	bool collision(std::vector <int> Layer2, std::vector <int> Layer3, int val, int xy);
 
+
 	std::vector<Bomb> bombas;
 
 public:
@@ -30,7 +31,11 @@ public:
 	void update(std::vector <int> Layer2, std::vector <int> Layer3, int key);
 	void render();
 
+	void checkExplosionCollision(const std::vector<Bomb>& bombas);
+	bool isAlive() const { return alive; };
+
 	void placeBomb();
 	void updateBombs(std::vector<int>& layer3, int mapWidth, int mapHeight);
 	void renderBombs();
+	const std::vector<Bomb>& getBombas() const { return bombas; };
 };
