@@ -12,6 +12,8 @@
 unsigned int lastTime = 0, currentTime, deltaTime;
 float msFrame = 1 / (FPS / 1000.0f);
 
+int lastMenuUpdate = 0;
+int menuCooldown = 200;
 
 ResourceManager* rm = ResourceManager::getInstance();
 Video* video = Video::getInstance();
@@ -65,34 +67,40 @@ int main(int argc, char* args[])
 			{
 				exitgame = true;
 			}
-			else if (input->getKeyPressed(Ti_Up) == true)
+			else if (currentTime - lastMenuUpdate >= menuCooldown)  // chequea si ya pasó el cooldown
 			{
-				menu.update(SDLK_UP);
-			}
-			else if (input->getKeyPressed(Ti_Down) == true)
-			{
-				menu.update(SDLK_DOWN);
-			}
-			else if (input->getKeyPressed(Ti_Enter) == true)
-			{
-				int option = menu.getSelectedOption();
-				if (option == 1) {
-					std::string mapPath = "Assets/mapa" + std::to_string(currentMap) + ".tmx";
-					map->loadMap(mapPath.c_str(), "Assets/tileset.png");
-					gamestate = 1;
-					menu.resetSelection();
-					pj1.init(32, 1);
-					pj2.init(32, 2);
-					gusano.init(32);
-					gameOver = false;
+				if (input->getKeyPressed(Ti_Up) == true)
+				{
+					menu.update(SDLK_UP);
+					lastMenuUpdate = currentTime;
 				}
-				else if (option == 2) {
-					currentMap = (currentMap % 3) + 1;
-					menu.resetSelection();
-					menu.setCurrentMap(currentMap);
+				else if (input->getKeyPressed(Ti_Down) == true)
+				{
+					menu.update(SDLK_DOWN);
+					lastMenuUpdate = currentTime;
 				}
-				else if (option == 3) {
-					exitgame = true;
+				else if (input->getKeyPressed(Ti_Enter) == true)
+				{
+					int option = menu.getSelectedOption();
+					if (option == 1) {
+						std::string mapPath = "Assets/mapa" + std::to_string(currentMap) + ".tmx";
+						map->loadMap(mapPath.c_str(), "Assets/tileset.png");
+						gamestate = 1;
+						menu.resetSelection();
+						pj1.init(32, 1);
+						pj2.init(32, 2);
+						gusano.init(32);
+						gameOver = false;
+					}
+					else if (option == 2) {
+						currentMap = (currentMap % 3) + 1;
+						menu.resetSelection();
+						menu.setCurrentMap(currentMap);
+					}
+					else if (option == 3) {
+						exitgame = true;
+					}
+					lastMenuUpdate = currentTime;
 				}
 			}
 			menu.render();
