@@ -90,8 +90,8 @@ int main(int argc, char* args[])
 			pj2.update(map->getLayer2(), map->getLayer3(), key);
 
 			//Update Bombs
-			pj1.updateBombs(map->getLayer3(), map->getWidth(), map->getHeight());
-			pj2.updateBombs(map->getLayer3(), map->getWidth(), map->getHeight());
+			pj1.updateBombs(map->getLayer3(), map->getWidth(), map->getHeight(), map->getLayer2());
+			pj2.updateBombs(map->getLayer3(), map->getWidth(), map->getHeight(), map->getLayer2());
 			
 			pj1.checkExplosionCollision(pj1.getBombas());
 			pj1.checkExplosionCollision(pj2.getBombas());

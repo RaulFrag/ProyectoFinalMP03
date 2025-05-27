@@ -35,7 +35,7 @@ public:
 	bool isAlive() const { return alive; };
 
 	void placeBomb();
-	void updateBombs(std::vector<int>& layer3, int mapWidth, int mapHeight);
+	void updateBombs(std::vector<int>& layer3, int mapWidth, int mapHeight, std::vector<int>& layer2);
 	void renderBombs();
 	const std::vector<Bomb>& getBombas() const { return bombas; };
 };

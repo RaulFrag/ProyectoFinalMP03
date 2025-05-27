@@ -14,7 +14,7 @@ Bomb::Bomb(int _x, int _y, int _tileW, int _tileH)
     explosionIMG = rm->loadAndGetGraphicID("Assets\\slime amarillo.png");
 }
 
-void Bomb::update(std::vector<int>& layer3, int mapWidth, int mapHeight)
+void Bomb::update(std::vector<int>& layer3, int mapWidth, int mapHeight, const std::vector<int>& layer2)
 {
     tiempo--;
     if (tiempo <= 0 && !explotada) {
@@ -30,26 +30,33 @@ void Bomb::update(std::vector<int>& layer3, int mapWidth, int mapHeight)
         };
 
         for (auto& pos : indices) {
-            int i = pos[0] + pos[1] * mapWidth;
+            int tx = pos[0];
+            int ty = pos[1];
 
-            if (pos[0] >= 0 && pos[0] < mapWidth && pos[1] >= 0 && pos[1] < mapHeight) {
-                if (layer3[i] == 19) {
-                    layer3[i] = 0;
-                    std::cout << "Bloque destruido en: " << pos[0] << "," << pos[1] << std::endl;
+            if (tx >= 0 && tx < mapWidth && ty >= 0 && ty < mapHeight) {
+                int i = tx + ty * mapWidth;
+
+                if (layer2[i] != 0) {
+                    continue;
                 }
-            }
 
-            Explosion ex;
-            ex.x = pos[0] * tileSize;
-            ex.y = pos[1] * tileSize;
-            ex.tiempoRestante = 30;
-            explosiones.push_back(ex);
+                if (layer3[i] != 0) {
+                    layer3[i] = 0;
+                    std::cout << "Bloque destruido en: " << tx << "," << ty << std::endl;
+                }
+
+                Explosion ex;
+                ex.x = tx * tileSize;
+                ex.y = ty * tileSize;
+                ex.tiempoRestante = 30;
+                explosiones.push_back(ex);
+            }
         }
 
         explotada = true;
         activa = false;
     }
-    
+
     for (auto& ex : explosiones) {
         ex.tiempoRestante--;
     }

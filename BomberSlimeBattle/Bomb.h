@@ -28,7 +28,7 @@ private:
 public:
     Bomb(int _x, int _y, int _tileW, int _tileH);
 
-    void update(std::vector<int>& layer3, int mapWidth, int mapHeight);
+    void update(std::vector<int>& layer3, int mapWidth, int mapHeight, const std::vector<int>& layer2);
     void render();
     bool isExplotada() const { return explotada && explosiones.empty(); };
     bool isActiva() const { return activa; };

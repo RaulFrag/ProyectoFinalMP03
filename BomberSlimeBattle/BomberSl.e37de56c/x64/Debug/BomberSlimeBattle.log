@@ -1,4 +1,8 @@
-﻿  Mapa.cpp
-C:\Users\raulf\OneDrive\Escritorio\ProyectoFinalMP03\BomberSlimeBattle\Mapa.cpp(125,62): warning C4267: 'argumento': conversión de 'size_t' a 'int'; posible pérdida de datos
-C:\Users\raulf\OneDrive\Escritorio\ProyectoFinalMP03\BomberSlimeBattle\Mapa.cpp(125,45): warning C4267: 'argumento': conversión de 'size_t' a 'int'; posible pérdida de datos
+﻿  Bomb.cpp
+  Jugador.cpp
+  Mapa.cpp
+C:\Users\raulf\OneDrive\Escritorio\ProyectoFinalMP03\BomberSlimeBattle\Mapa.cpp(124,62): warning C4267: 'argumento': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\raulf\OneDrive\Escritorio\ProyectoFinalMP03\BomberSlimeBattle\Mapa.cpp(124,45): warning C4267: 'argumento': conversión de 'size_t' a 'int'; posible pérdida de datos
+  main.cpp
+  Generando código...
   BomberSlimeBattle.vcxproj -> C:\Users\raulf\OneDrive\Escritorio\ProyectoFinalMP03\BomberSlimeBattle\x64\Debug\BomberSlimeBattle.exe
