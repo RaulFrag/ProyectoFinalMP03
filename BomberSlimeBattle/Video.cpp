@@ -8,6 +8,7 @@ Video::Video()
     gRenderer = NULL;
 
     SDL_Init(SDL_INIT_VIDEO);
+
     gWindow = SDL_CreateWindow("SDL Game", SDL_WINDOWPOS_UNDEFINED,
         SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
 
@@ -34,6 +35,14 @@ void Video::renderGraphic(int img, int posX, int posY, int width, int height, in
 
     SDL_Texture* texture = ResourceManager::getInstance()->getGraphicByID(img);
     SDL_RenderCopy(gRenderer, texture, &rectAux, &r);
+}
+
+void Video::drawRect(int x, int y, int width, int height, Uint8 r, Uint8 g, Uint8 b)
+{
+    SDL_Rect rect = { x, y, width, height };
+    SDL_SetRenderDrawColor(gRenderer, r, g, b, 255);
+    SDL_RenderDrawRect(gRenderer, &rect);
+    SDL_SetRenderDrawColor(gRenderer, 0, 0, 0, 255);
 }
 
 void Video::clearScreen(/*unsigned int color_key*/)

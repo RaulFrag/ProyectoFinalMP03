@@ -112,7 +112,6 @@ void Mapa::render()
 			for (size_t j = 0; j < _width; j++)
 			{
 				_id = Layers[y].at(count) - 1;
-				//std::cout << _id << std::endl;
 
 				if (_id >= 0)
 				{
