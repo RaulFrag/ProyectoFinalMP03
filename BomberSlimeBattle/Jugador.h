@@ -30,7 +30,7 @@ public:
 
 	void init(int tile, int id);
 	void loadSprite(std::string file);
-	void update(std::vector <int> Layer2, std::vector <int> Layer3, int currentTime/*, int key*/);
+	void update(std::vector <int> Layer2, std::vector <int> Layer3, int currentTime);
 	void render();
 
 	void checkExplosionCollision(const std::vector<Bomb>& bombas);

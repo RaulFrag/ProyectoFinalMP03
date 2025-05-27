@@ -124,9 +124,6 @@
     <CopyFileToFolders Include="Assets\bomba.png">
       <Filter>Resource Files\Assets</Filter>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="Assets\bombaReal.png">
-      <Filter>Resource Files\Assets</Filter>
-    </CopyFileToFolders>
     <CopyFileToFolders Include="Assets\changeMapButton.png">
       <Filter>Resource Files\Assets</Filter>
     </CopyFileToFolders>
@@ -143,12 +140,6 @@
       <Filter>Resource Files\Assets</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="Assets\gusano_izquierda.png">
-      <Filter>Resource Files\Assets</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="Assets\mapa1.tiled-project">
-      <Filter>Resource Files\Assets</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="Assets\mapa1.tiled-session">
       <Filter>Resource Files\Assets</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="Assets\mapa1.tmx">
@@ -172,58 +163,31 @@
     <CopyFileToFolders Include="Assets\playButton.png">
       <Filter>Resource Files\Assets</Filter>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="Assets\Slime amarillo.pixil">
-      <Filter>Resource Files\Assets</Filter>
-    </CopyFileToFolders>
     <CopyFileToFolders Include="Assets\slime amarillo.png">
-      <Filter>Resource Files\Assets</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="Assets\Slime azul.pixil">
       <Filter>Resource Files\Assets</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="Assets\slime azul.png">
       <Filter>Resource Files\Assets</Filter>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="Assets\Slime blanco.pixil">
-      <Filter>Resource Files\Assets</Filter>
-    </CopyFileToFolders>
     <CopyFileToFolders Include="Assets\slime blanco.png">
-      <Filter>Resource Files\Assets</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="Assets\Slime naranja.pixil">
       <Filter>Resource Files\Assets</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="Assets\slime naranja.png">
       <Filter>Resource Files\Assets</Filter>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="Assets\Slime negro.pixil">
-      <Filter>Resource Files\Assets</Filter>
-    </CopyFileToFolders>
     <CopyFileToFolders Include="Assets\slime negro.png">
-      <Filter>Resource Files\Assets</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="Assets\Slime rojo.pixil">
       <Filter>Resource Files\Assets</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="Assets\slime rojo.png">
       <Filter>Resource Files\Assets</Filter>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="Assets\Slime rosa.pixil">
-      <Filter>Resource Files\Assets</Filter>
-    </CopyFileToFolders>
     <CopyFileToFolders Include="Assets\slime rosa.png">
-      <Filter>Resource Files\Assets</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="Assets\Slime verde.pixil">
       <Filter>Resource Files\Assets</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="Assets\slime verde.png">
       <Filter>Resource Files\Assets</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="Assets\tileset.png">
-      <Filter>Resource Files\Assets</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="Assets\tileset.tsx">
       <Filter>Resource Files\Assets</Filter>
     </CopyFileToFolders>
   </ItemGroup>

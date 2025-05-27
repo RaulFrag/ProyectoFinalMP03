@@ -1,7 +1,7 @@
 #pragma once
 
-#define SCREEN_WIDTH 920
-#define SCREEN_HEIGHT 820
+#define SCREEN_WIDTH 640
+#define SCREEN_HEIGHT 640
 
 #include "ResourceManager.h"
 
