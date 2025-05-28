@@ -16,8 +16,18 @@ private:
     struct Explosion {
         int x, y;
         int tiempoRestante;
+        int frame;
+        int frameCounter;
+        static const int maxFrames = 64;
+        static const int frameDuration = 2;
+
+        Explosion(int _x, int _y, int _tiempoRestante) : x(_x), y(_y), tiempoRestante(_tiempoRestante), frame(0), frameCounter(0) { }
     };
     std::vector<Explosion> explosiones;
+
+    static const int frameWidth = 128;
+    static const int frameHeight = 128;
+    static const int spriteSheetColumns = 8;
 
     ResourceManager* rm = ResourceManager::getInstance();
     Video* vid = Video::getInstance();

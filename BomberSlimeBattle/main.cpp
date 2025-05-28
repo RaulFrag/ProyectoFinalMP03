@@ -12,9 +12,6 @@
 unsigned int lastTime = 0, currentTime, deltaTime;
 float msFrame = 1 / (FPS / 1000.0f);
 
-int lastMenuUpdate = 0;
-int menuCooldown = 200;
-
 ResourceManager* rm = ResourceManager::getInstance();
 Video* video = Video::getInstance();
 Input* input = Input::getInstanceI();
@@ -32,6 +29,8 @@ int main(int argc, char* args[])
 {
 	Mapa* map = new Mapa();
 	
+	int lastMenuUpdate = 0;
+	int menuCooldown = 200;
 	int mapIndex = 0;
 	
 	//Load Images
@@ -67,7 +66,7 @@ int main(int argc, char* args[])
 			{
 				exitgame = true;
 			}
-			else if (currentTime - lastMenuUpdate >= menuCooldown)  // chequea si ya pasó el cooldown
+			else if (currentTime - lastMenuUpdate >= menuCooldown)
 			{
 				if (input->getKeyPressed(Ti_Up) == true)
 				{
@@ -128,6 +127,15 @@ int main(int argc, char* args[])
 			{
 				gameOver = true;
 				gamestate = 2;
+
+				if (!pj1.isAlive())
+				{
+					hs.doHighScore("2");
+				}
+				else if (!pj2.isAlive())
+				{
+					hs.doHighScore("1");
+				}
 			}
 
 			//Paint everything
@@ -143,14 +151,32 @@ int main(int argc, char* args[])
 		// -- HighScore
 		if (gamestate == 2)
 		{
-			gamestate = 0;
+			std::vector<std::pair<std::string, UINT_32>> scores = hs.getScores();
+
+			video->drawText("HIGHSCORES", 200, 50, 255, 255, 0);
+
+			int y = 100;
+			for (const auto& entry : scores)
+			{
+				std::string line = entry.first + " : " + std::to_string(entry.second);
+				video->drawText(line.c_str(), 180, y, 255, 255, 255);
+				y += 30;
+			}
+
+			video->drawText("Presiona ENTER para volver al menu", 130, y + 50, 200, 200, 200);
+
+			if (currentTime - lastMenuUpdate >= menuCooldown)
+			{
+				if (input->getKeyPressed(Ti_Enter))
+				{
+					gamestate = 0;
+				}
+			}
 		}
 
 		//Update Screen
 		video->updateScreen();
 	}
-
-	//hs.doHighScore();
 
 	return 0;
 }

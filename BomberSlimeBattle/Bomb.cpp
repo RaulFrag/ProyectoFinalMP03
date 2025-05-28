@@ -11,7 +11,7 @@ Bomb::Bomb(int _x, int _y, int _tileW, int _tileH)
     explotada = false;
 
     bombIMG = rm->loadAndGetGraphicID("Assets\\bomba.png");
-    explosionIMG = rm->loadAndGetGraphicID("Assets\\slime amarillo.png");
+    explosionIMG = rm->loadAndGetGraphicID("Assets\\explosion.png");
 }
 
 void Bomb::update(std::vector<int>& layer3, int mapWidth, int mapHeight, const std::vector<int>& layer2)
@@ -45,10 +45,7 @@ void Bomb::update(std::vector<int>& layer3, int mapWidth, int mapHeight, const s
                     std::cout << "Bloque destruido en: " << tx << "," << ty << std::endl;
                 }
 
-                Explosion ex;
-                ex.x = tx * tileSize;
-                ex.y = ty * tileSize;
-                ex.tiempoRestante = 30;
+                Explosion ex(tx * tileSize, ty * tileSize, 30);
                 explosiones.push_back(ex);
             }
         }
@@ -59,6 +56,16 @@ void Bomb::update(std::vector<int>& layer3, int mapWidth, int mapHeight, const s
 
     for (auto& ex : explosiones) {
         ex.tiempoRestante--;
+
+        // Animacion
+        ex.frameCounter++;
+        if (ex.frameCounter >= ex.frameDuration) {
+            ex.frameCounter = 0;
+            ex.frame++;
+            if (ex.frame >= Explosion::maxFrames) {
+                ex.frame = Explosion::maxFrames - 1;
+            }
+        }
     }
 
     explosiones.erase(
@@ -78,6 +85,14 @@ void Bomb::render()
 
     for (auto& ex : explosiones)
     {
-        vid->renderGraphic(explosionIMG, ex.x, ex.y, tileSize, tileSize, 0, 0);
+        for (auto& ex : explosiones)
+        {
+            int srcX = (ex.frame % spriteSheetColumns) * frameWidth;
+            int srcY = (ex.frame / spriteSheetColumns) * frameHeight;
+            int drawX = ex.x + (tileSize - frameWidth) / 2 + (tileSize / 4);
+            int drawY = ex.y + (tileSize - frameHeight) / 2 - tileSize;
+
+            vid->renderGraphic(explosionIMG, drawX, drawY, frameWidth, frameHeight, srcX, srcY);
+        }
     }
 }

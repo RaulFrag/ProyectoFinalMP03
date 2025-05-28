@@ -190,5 +190,14 @@
     <CopyFileToFolders Include="Assets\tileset.png">
       <Filter>Resource Files\Assets</Filter>
     </CopyFileToFolders>
+    <CopyFileToFolders Include="Assets\explosion.png">
+      <Filter>Resource Files\Assets</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Libs\SDL2_ttf-2.24.0\lib\x64\SDL2_ttf.dll">
+      <Filter>Resource Files\dll</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Assets\OpenSans-VariableFont_wdth,wght.ttf">
+      <Filter>Resource Files\Assets</Filter>
+    </CopyFileToFolders>
   </ItemGroup>
 </Project>

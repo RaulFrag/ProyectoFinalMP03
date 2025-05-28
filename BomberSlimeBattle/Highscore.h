@@ -2,6 +2,7 @@
 #include <iostream>
 #include <fstream>
 #include "Types.h"
+#include <vector>
 
 const int cSize = 6;
 
@@ -26,6 +27,9 @@ public:
     Highscore();
     ~Highscore();
 
-    void doHighScore();
+    std::vector<std::pair<std::string, UINT_32>> getScores();
+
+    void doHighScore(std::string playerIdentity);
+    void showHighScore();
 };
 

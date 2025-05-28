@@ -1,2 +1,7 @@
-﻿  Jugador.cpp
-  BomberSlimeBattle.vcxproj -> F:\DAM 2\Programacio 2\ProyectoFinalMP03\BomberSlimeBattle\x64\Debug\BomberSlimeBattle.exe
+﻿  Highscore.cpp
+  main.cpp
+C:\Users\raulf\OneDrive\Escritorio\ProyectoFinalMP03\BomberSlimeBattle\main.cpp(53,28): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\raulf\OneDrive\Escritorio\ProyectoFinalMP03\BomberSlimeBattle\main.cpp(69,42): warning C4018: '>=': no coinciden signed/unsigned
+C:\Users\raulf\OneDrive\Escritorio\ProyectoFinalMP03\BomberSlimeBattle\main.cpp(168,37): warning C4018: '>=': no coinciden signed/unsigned
+  Generando código...
+  BomberSlimeBattle.vcxproj -> C:\Users\raulf\OneDrive\Escritorio\ProyectoFinalMP03\BomberSlimeBattle\x64\Debug\BomberSlimeBattle.exe
