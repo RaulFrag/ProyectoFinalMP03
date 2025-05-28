@@ -43,6 +43,9 @@ int main(int argc, char* args[])
 	int currentMap = 1;
 	int gamestate = 0;
 	bool exitgame = false;
+
+	bool changePlayer = false;
+
 	while (!exitgame)
 	{
 		currentTime = SDL_GetTicks();
@@ -112,7 +115,14 @@ int main(int argc, char* args[])
 			pj2.update(map->getLayer2(), map->getLayer3(), currentTime);
 
 			//Update AI
-			gusano.update(map->getLayer2(), 20, 20, pj1.getTilePos());
+			if (!changePlayer)
+			{
+				gusano.update(map->getLayer2(), 20, 20, pj1.getTilePos(), changePlayer);
+			}
+			else
+			{
+				gusano.update(map->getLayer2(), 20, 20, pj2.getTilePos(), changePlayer);
+			}
 
 			//Update Bombs
 			pj1.updateBombs(map->getLayer3(), map->getWidth(), map->getHeight(), map->getLayer2());

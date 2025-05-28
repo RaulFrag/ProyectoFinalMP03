@@ -36,7 +36,7 @@ void Gusano::loadSprite(std::string file)
 	gusId = rm->loadAndGetGraphicID(file.c_str());
 }
 
-void Gusano::update(const std::vector<int>& map, int mapWidth, int mapHeight, std::pair<int, int> target)
+void Gusano::update(const std::vector<int>& map, int mapWidth, int mapHeight, std::pair<int, int> target, bool& objetivoAlcanzado)
 {
     int tileX = gusPos.x / gusSprite.w;
     int tileY = gusPos.y / gusSprite.h;
@@ -57,6 +57,19 @@ void Gusano::update(const std::vector<int>& map, int mapWidth, int mapHeight, st
 
         currentPathIndex++;
         lastMoveTime = now;
+
+        // Comprueba si se alcanzó el objetivo
+        if (currentPathIndex >= currentPath.size())
+        {
+            if (objetivoAlcanzado)
+            {
+                objetivoAlcanzado = false;
+            }
+            else
+            {
+                objetivoAlcanzado = true;
+            }
+        }
     }
 }
 

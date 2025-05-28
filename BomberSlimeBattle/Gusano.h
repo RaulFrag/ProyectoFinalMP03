@@ -12,6 +12,7 @@ class Gusano
 	int vel;
 
 	std::vector<std::pair<int, int>> currentPath;
+	std::pair<int, int> currentTarget;
 	int currentPathIndex = 0;
 	int lastMoveTime = 0;
 	int moveDelay = 1000;
@@ -22,7 +23,7 @@ public:
 
 	void init(int tile);
 	void loadSprite(std::string file);
-	void update(const std::vector<int>& map, int mapWidth, int mapHeight, std::pair<int, int> target);
+	void update(const std::vector<int>& map, int mapWidth, int mapHeight, std::pair<int, int> target, bool& objetivoAlcanzado);
 	void render();
 };
 

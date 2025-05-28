@@ -44,6 +44,28 @@ bool Jugador::collision(std::vector<int> Layer2, std::vector<int> Layer3, int va
 	return true;
 }
 
+bool Jugador::collisionBombas(int val, int xy)
+{
+	for (auto& bomba : bombas)
+	{
+		if (xy == 0)
+		{
+			if (playerPos.x + val == bomba.getX() && playerPos.y == bomba.getY())
+			{
+				return true;
+			}
+		}
+		else if (xy == 1)
+		{
+			if (playerPos.x == bomba.getX() && playerPos.y + val == bomba.getY())
+			{
+				return true;
+			}
+		}
+	}
+	return false;
+}
+
 void Jugador::init(int tile, int id)
 {
 	playerSprite.h = tile;
@@ -84,32 +106,44 @@ void Jugador::update(std::vector<int> Layer2, std::vector<int> Layer3, int curre
 			{
 				if (!collision(Layer2, Layer3, vel, 0))
 				{
-					playerPos.x += vel;
-					lastMoveTime = currentTime;
+					if (!collisionBombas(vel, 0))
+					{
+						playerPos.x += vel;
+						lastMoveTime = currentTime;
+					}
 				}
 			}
 			else if (key->getKeyPressed(Ti_Left) == true)
 			{
 				if (!collision(Layer2, Layer3, -vel, 0))
 				{
-					playerPos.x -= vel;
-					lastMoveTime = currentTime;
+					if (!collisionBombas(-vel, 0))
+					{
+						playerPos.x -= vel;
+						lastMoveTime = currentTime;
+					}
 				}
 			}
 			else if (key->getKeyPressed(Ti_Down) == true)
 			{
 				if (!collision(Layer2, Layer3, vel, 1))
 				{
-					playerPos.y += vel;
-					lastMoveTime = currentTime;
+					if (!collisionBombas(vel, 1))
+					{
+						playerPos.y += vel;
+						lastMoveTime = currentTime;
+					}
 				}
 			}
 			else if (key->getKeyPressed(Ti_Up) == true)
 			{
 				if (!collision(Layer2, Layer3, -vel, 1))
 				{
-					playerPos.y -= vel;
-					lastMoveTime = currentTime;
+					if (!collisionBombas(-vel, 1))
+					{
+						playerPos.y -= vel;
+						lastMoveTime = currentTime;
+					}
 				}
 			}
 			else if (key->getKeyPressed(Ti_RShift) == true)
@@ -123,32 +157,44 @@ void Jugador::update(std::vector<int> Layer2, std::vector<int> Layer3, int curre
 			{
 				if (!collision(Layer2, Layer3, vel, 0))
 				{
-					playerPos.x += vel;
-					lastMoveTime = currentTime;
+					if (!collisionBombas(vel, 0))
+					{
+						playerPos.x += vel;
+						lastMoveTime = currentTime;
+					}
 				}
 			}
 			else if (key->getKeyPressed(Ti_A) == true)
 			{
 				if (!collision(Layer2, Layer3, -vel, 0))
 				{
-					playerPos.x -= vel;
-					lastMoveTime = currentTime;
+					if (!collisionBombas(-vel, 0))
+					{
+						playerPos.x -= vel;
+						lastMoveTime = currentTime;
+					}
 				}
 			}
 			else if (key->getKeyPressed(Ti_S) == true)
 			{
 				if (!collision(Layer2, Layer3, vel, 1))
 				{
-					playerPos.y += vel;
-					lastMoveTime = currentTime;
+					if (!collisionBombas(vel, 1))
+					{
+						playerPos.y += vel;
+						lastMoveTime = currentTime;
+					}
 				}
 			}
 			else if (key->getKeyPressed(Ti_W) == true)
 			{
 				if (!collision(Layer2, Layer3, -vel, 1))
 				{
-					playerPos.y -= vel;
-					lastMoveTime = currentTime;
+					if (!collisionBombas(-vel, 1))
+					{
+						playerPos.y -= vel;
+						lastMoveTime = currentTime;
+					}
 				}
 			}
 			else if (key->getKeyPressed(Ti_F) == true)

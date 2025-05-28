@@ -21,6 +21,7 @@ class Jugador
 	int moveCooldown = 150;
 
 	bool collision(std::vector <int> Layer2, std::vector <int> Layer3, int val, int xy);
+	bool collisionBombas(int val, int xy);
 
 	std::vector<Bomb> bombas;
 
@@ -41,5 +42,5 @@ public:
 	void renderBombs();
 	const std::vector<Bomb>& getBombas() const { return bombas; };
 
-	std::pair<int, int> getTilePos() const { return { playerPos.x / 20, playerPos.y / 20 }; }
+	std::pair<int, int> getTilePos() const { return { playerPos.x / 32, playerPos.y / 32 }; }
 };
