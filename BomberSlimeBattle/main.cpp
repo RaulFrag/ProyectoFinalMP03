@@ -178,5 +178,6 @@ int main(int argc, char* args[])
 		video->updateScreen();
 	}
 
+	video->~Video();
 	return 0;
 }
