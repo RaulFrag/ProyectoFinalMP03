@@ -44,4 +44,10 @@ public:
     bool isActiva() const { return activa; };
 
     const std::vector<Explosion>& getExplosiones() const { return explosiones; };
+
+    int getX() { return x; };
+    int getY() { return y; };
+
+    void setX(int val) { x += val; };
+    void setY(int val) { y += val; };
 };
