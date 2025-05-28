@@ -115,13 +115,22 @@ int main(int argc, char* args[])
 			pj2.update(map->getLayer2(), map->getLayer3(), currentTime);
 
 			//Update AI
+			std::vector<Bomb*> bombas;
+
+			for (auto& b : pj1.getBombas()) {
+				bombas.push_back(&b);
+			}
+			for (auto& b : pj2.getBombas()) {
+				bombas.push_back(&b);
+			}
+
 			if (!changePlayer)
 			{
-				gusano.update(map->getLayer2(), 20, 20, pj1.getTilePos(), changePlayer);
+				gusano.update(map->getLayer2(), 20, 20, pj1.getTilePos(), changePlayer, bombas);
 			}
 			else
 			{
-				gusano.update(map->getLayer2(), 20, 20, pj2.getTilePos(), changePlayer);
+				gusano.update(map->getLayer2(), 20, 20, pj2.getTilePos(), changePlayer, bombas);
 			}
 
 			//Update Bombs

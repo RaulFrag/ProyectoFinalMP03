@@ -1,7 +1,8 @@
 ﻿  Gusano.cpp
+  Jugador.cpp
   main.cpp
 F:\DAM 2\Programacio 2\ProyectoFinalMP03\BomberSlimeBattle\main.cpp(56,28): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
 F:\DAM 2\Programacio 2\ProyectoFinalMP03\BomberSlimeBattle\main.cpp(72,42): warning C4018: '>=': no coinciden signed/unsigned
-F:\DAM 2\Programacio 2\ProyectoFinalMP03\BomberSlimeBattle\main.cpp(178,37): warning C4018: '>=': no coinciden signed/unsigned
+F:\DAM 2\Programacio 2\ProyectoFinalMP03\BomberSlimeBattle\main.cpp(187,37): warning C4018: '>=': no coinciden signed/unsigned
   Generando código...
   BomberSlimeBattle.vcxproj -> F:\DAM 2\Programacio 2\ProyectoFinalMP03\BomberSlimeBattle\x64\Debug\BomberSlimeBattle.exe

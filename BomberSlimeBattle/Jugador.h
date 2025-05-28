@@ -41,6 +41,7 @@ public:
 	void updateBombs(std::vector<int>& layer3, int mapWidth, int mapHeight, std::vector<int>& layer2);
 	void renderBombs();
 	const std::vector<Bomb>& getBombas() const { return bombas; };
+	std::vector<Bomb>& getBombas() { return bombas; }
 
 	std::pair<int, int> getTilePos() const { return { playerPos.x / 32, playerPos.y / 32 }; }
 };

@@ -1,6 +1,27 @@
 #include "Gusano.h"
 #include "Astar.h"
 
+void Gusano::colisionBombas(std::vector<Bomb*>& bombas, int val, int xy)
+{
+    for (auto* bomba : bombas) 
+    {
+        if (xy == 0) 
+        {
+            if (gusPos.x + val == bomba->getX() && gusPos.y == bomba->getY()) 
+            {
+                bomba->setX(val);
+            }
+        }
+        else if (xy == 1) 
+        {
+            if (gusPos.x == bomba->getX() && gusPos.y + val == bomba->getY()) 
+            {
+                bomba->setY(val);
+            }
+        }
+    }
+}
+
 Gusano::Gusano()
 {
 	gusId = 0;
@@ -36,7 +57,7 @@ void Gusano::loadSprite(std::string file)
 	gusId = rm->loadAndGetGraphicID(file.c_str());
 }
 
-void Gusano::update(const std::vector<int>& map, int mapWidth, int mapHeight, std::pair<int, int> target, bool& objetivoAlcanzado)
+void Gusano::update(const std::vector<int>& map, int mapWidth, int mapHeight, std::pair<int, int> target, bool& objetivoAlcanzado, std::vector<Bomb*>& bombas)
 {
     int tileX = gusPos.x / gusSprite.w;
     int tileY = gusPos.y / gusSprite.h;
@@ -50,6 +71,27 @@ void Gusano::update(const std::vector<int>& map, int mapWidth, int mapHeight, st
     int now = SDL_GetTicks();
     if (now - lastMoveTime < moveDelay) return;
 
+    auto next = currentPath[currentPathIndex];
+    int dirX = next.first - tileX;
+    int dirY = next.second - tileY;
+
+    if (dirX == 1 && dirY == 0) //derecha
+    {
+        colisionBombas(bombas, 32, 0);
+    }
+    else if (dirX == -1 && dirY == 0) //izquierda
+    {
+        colisionBombas(bombas, -32, 0);
+    }
+    else if (dirX == 0 && dirY == 1) //abajo
+    {
+        colisionBombas(bombas, 32, 1);
+    }
+    else if (dirX == 0 && dirY == -1) //arriba
+    {
+        colisionBombas(bombas, -32, 1);
+    }
+
     if (!currentPath.empty() && currentPathIndex < currentPath.size()) {
         auto next = currentPath[currentPathIndex];
         gusPos.x = next.first * gusSprite.w;
@@ -58,7 +100,6 @@ void Gusano::update(const std::vector<int>& map, int mapWidth, int mapHeight, st
         currentPathIndex++;
         lastMoveTime = now;
 
-        // Comprueba si se alcanzó el objetivo
         if (currentPathIndex >= currentPath.size())
         {
             if (objetivoAlcanzado)
