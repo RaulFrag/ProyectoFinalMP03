@@ -13,9 +13,6 @@ void Highscore::SetName(std::string nam)
 
 void Highscore::bubbleSort()
 {
-	nameSave[0] = name;
-	pointSave[0] = point;
-
 	for (int i = 0; i < cSize - 1; ++i)
 	{
 		for (int j = 0; j < cSize - i - 1; ++j)
@@ -48,7 +45,8 @@ std::vector<std::pair<std::string, UINT_32>> Highscore::getScores()
 {
 	std::vector<std::pair<std::string, UINT_32>> scores;
 
-	for (size_t i = 0; i < cSize - 1; i++) {
+	for (size_t i = 0; i < cSize; i++) 
+	{
 		if (pointSave[i] > 0) {
 			scores.emplace_back(nameSave[i], pointSave[i]);
 		}
@@ -58,45 +56,46 @@ std::vector<std::pair<std::string, UINT_32>> Highscore::getScores()
 
 void Highscore::write(std::fstream& file)
 {
-	bubbleSort();
-
-	for (size_t i = 0; i < cSize - 1; i++)
+	for (size_t i = 0; i < cSize; i++)
 	{
-		if (pointSave[i] > 0)
-		{
-			char nameBuffer[9] = { '\0' };
-			strncpy_s(nameBuffer, sizeof(nameBuffer), nameSave[i].c_str(), _TRUNCATE);
-			file.write(nameBuffer, 8);
-			file.write(reinterpret_cast<const char*>(&pointSave[i]), sizeof(UINT_32));
-		}
+		char nameBuffer[9] = {};
+		std::copy_n(nameSave[i].begin(), std::min<size_t>(8, nameSave[i].size()), nameBuffer);
+		file.write(nameBuffer, 8);
+
+		file.write(reinterpret_cast<const char*>(&pointSave[i]), sizeof(UINT_32));
 	}
 }
 
 void Highscore::readStart(std::fstream& file)
 {
-	for (size_t i = 1; i < cSize; i++)
+	for (size_t i = 0; i < cSize; i++)
 	{
 		char buffer[9] = { '\0' };
 		file.read(buffer, 8);
+		buffer[8] = '\0';
 		nameSave[i] = std::string(buffer);
+
 		file.read(reinterpret_cast<char*>(&pointSave[i]), sizeof(UINT_32));
 	}
 }
 
 void Highscore::readEnd(std::fstream& file)
 {
-    for (size_t i = 0; i < cSize - 1; i++)
-    {
-        char buffer[9] = { '\0' };
-        file.read(buffer, 8);
-        nameSave[i] = std::string(buffer);
-        file.read(reinterpret_cast<char*>(&pointSave[i]), sizeof(UINT_32));
-    }
+	for (size_t i = 0; i < cSize; i++)
+	{
+		char buffer[9] = { '\0' };
+		file.read(buffer, 8);
+		buffer[8] = '\0';
+		nameSave[i] = std::string(buffer);
+
+		file.read(reinterpret_cast<char*>(&pointSave[i]), sizeof(UINT_32));
+	}
 }
 
 void Highscore::doHighScore(std::string playerIdentity)
 {
 	std::string stmp = "PLAYER " + playerIdentity;
+	std::string shortName = stmp.substr(0, 8);
 
 	// Leer los puntos actuales
 	std::fstream readf1("HighScore.bin", std::ios::in | std::ios::binary);
@@ -105,26 +104,37 @@ void Highscore::doHighScore(std::string playerIdentity)
 		readf1.close();
 	}
 
-	// Buscar si el jugador ya existe y le suma 1 punto
+	// Buscar si el jugador ya existe y sumarle 1 punto
 	bool found = false;
 	for (size_t i = 0; i < cSize; i++) {
-		if (nameSave[i] == stmp) {
+		if (nameSave[i].substr(0, 8) == shortName) {
 			pointSave[i] += 1;
 			found = true;
 			break;
 		}
 	}
 
-	// Si no lo encontra, lo agrega en la posición 0
+	// Si no lo encuentra, añadir nuevo jugador en el primer slot vacío
 	if (!found) {
-		SetName(stmp);
-		SetP(1);
-		nameSave[0] = name;
-		pointSave[0] = point;
+		for (size_t i = 0; i < cSize; i++) {
+			if (pointSave[i] == 0) {
+				nameSave[i] = shortName;
+				pointSave[i] = 1;
+				found = true;
+				break;
+			}
+		}
+
+		// Si está lleno, reemplaza al peor (último después del ordenamiento)
+		if (!found) {
+			bubbleSort(); // asegúrate que estén ordenados
+			nameSave[cSize - 1] = shortName;
+			pointSave[cSize - 1] = 1;
+		}
 	}
 
 	// Escribir los datos ordenados
-	std::fstream writef("HighScore.bin", std::ios::out | std::ios::binary);
+	std::fstream writef("HighScore.bin", std::ios::out | std::ios::binary | std::ios::trunc);
 	if (writef.is_open()) {
 		bubbleSort();
 		write(writef);
@@ -143,7 +153,8 @@ void Highscore::showHighScore()
 	}
 
 	// Mostrar puntos
-	for (size_t i = 0; i < cSize - 1; i++) {
+	for (size_t i = 0; i < cSize; i++)
+	{
 		if (pointSave[i] > 0) {
 			std::cout << nameSave[i].c_str() << " : " << pointSave[i] << std::endl;
 		}
