@@ -225,7 +225,6 @@ int main(int argc, char* args[])
 	}
 
 	video->~Video();
-	Mix_CloseAudio();
 	delete map;
 	return 0;
 }
