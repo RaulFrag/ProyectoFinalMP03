@@ -21,6 +21,7 @@ Jugador::Jugador()
 
 Jugador::~Jugador()
 {
+
 }
 
 bool Jugador::collision(std::vector<int> Layer2, std::vector<int> Layer3, int val, int xy)

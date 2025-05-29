@@ -12,6 +12,12 @@ Bomb::Bomb(int _x, int _y, int _tileW, int _tileH)
 
     bombIMG = rm->loadAndGetGraphicID("Assets\\bomba.png");
     explosionIMG = rm->loadAndGetGraphicID("Assets\\explosion.png");
+
+}
+
+Bomb::~Bomb()
+{
+
 }
 
 void Bomb::update(std::vector<int>& layer3, int mapWidth, int mapHeight, const std::vector<int>& layer2)
@@ -85,14 +91,11 @@ void Bomb::render()
 
     for (auto& ex : explosiones)
     {
-        for (auto& ex : explosiones)
-        {
-            int srcX = (ex.frame % spriteSheetColumns) * frameWidth;
-            int srcY = (ex.frame / spriteSheetColumns) * frameHeight;
-            int drawX = ex.x + (tileSize - frameWidth) / 2 + (tileSize / 4);
-            int drawY = ex.y + (tileSize - frameHeight) / 2 - tileSize;
+        int srcX = (ex.frame % spriteSheetColumns) * frameWidth;
+        int srcY = (ex.frame / spriteSheetColumns) * frameHeight;
+        int drawX = ex.x + (tileSize - frameWidth) / 2 + (tileSize / 4);
+        int drawY = ex.y + (tileSize - frameHeight) / 2 - tileSize;
 
-            vid->renderGraphic(explosionIMG, drawX, drawY, frameWidth, frameHeight, srcX, srcY);
-        }
+        vid->renderGraphic(explosionIMG, drawX, drawY, frameWidth, frameHeight, srcX, srcY);
     }
 }

@@ -37,6 +37,7 @@ private:
 
 public:
     Bomb(int _x, int _y, int _tileW, int _tileH);
+    ~Bomb();
 
     void update(std::vector<int>& layer3, int mapWidth, int mapHeight, const std::vector<int>& layer2);
     void render();

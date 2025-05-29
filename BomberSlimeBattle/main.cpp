@@ -29,16 +29,17 @@ int main(int argc, char* args[])
 {
 	Mapa* map = new Mapa();
 	
+	static Uint32 deathTime = 0;
+
 	int lastMenuUpdate = 0;
 	int menuCooldown = 200;
 	int mapIndex = 0;
-	
+
 	//Load Images
 	pj1.loadSprite("Assets\\slime naranja.png");
 	pj2.loadSprite("Assets\\slime verde.png");
 	gusano.loadSprite("Assets\\gusano_izquierda.png");
 
-	
 	bool gameOver = false;
 	int currentMap = 1;
 	int gamestate = 0;
@@ -125,8 +126,11 @@ int main(int argc, char* args[])
 		if (gamestate == 1)
 		{
 			//Update Characters
-			pj1.update(map->getLayer2(), map->getLayer3(), currentTime);
-			pj2.update(map->getLayer2(), map->getLayer3(), currentTime);
+			if (!gameOver)
+			{
+				pj1.update(map->getLayer2(), map->getLayer3(), currentTime);
+				pj2.update(map->getLayer2(), map->getLayer3(), currentTime);
+			}
 
 			//Update AI
 			std::vector<Bomb*> bombas;
@@ -138,13 +142,16 @@ int main(int argc, char* args[])
 				bombas.push_back(&b);
 			}
 
-			if (!changePlayer)
+			if (!gameOver)
 			{
-				gusano.update(map->getLayer2(), 20, 20, pj1.getTilePos(), changePlayer, bombas);
-			}
-			else
-			{
-				gusano.update(map->getLayer2(), 20, 20, pj2.getTilePos(), changePlayer, bombas);
+				if (!changePlayer)
+				{
+					gusano.update(map->getLayer2(), 20, 20, pj1.getTilePos(), changePlayer, bombas);
+				}
+				else
+				{
+					gusano.update(map->getLayer2(), 20, 20, pj2.getTilePos(), changePlayer, bombas);
+				}
 			}
 
 			//Update Bombs
@@ -156,9 +163,14 @@ int main(int argc, char* args[])
 			pj2.checkExplosionCollision(pj1.getBombas());
 			pj2.checkExplosionCollision(pj2.getBombas());
 
-			if ((!pj1.isAlive() || !pj2.isAlive()) && !gameOver) 
+			if ((!pj1.isAlive() || !pj2.isAlive()) && !gameOver)
 			{
 				gameOver = true;
+				deathTime = SDL_GetTicks();
+			}
+
+			if (gameOver && SDL_GetTicks() - deathTime >= 3000)
+			{
 				gamestate = 2;
 				gusano.~Gusano();
 
@@ -180,7 +192,6 @@ int main(int argc, char* args[])
 			pj2.renderBombs();
 
 			gusano.render();
-
 		}
 		// -- HighScore
 		if (gamestate == 2)
@@ -214,6 +225,7 @@ int main(int argc, char* args[])
 	}
 
 	video->~Video();
+	Mix_CloseAudio();
 	delete map;
 	return 0;
 }
