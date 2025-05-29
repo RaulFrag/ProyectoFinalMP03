@@ -1,6 +1,27 @@
-﻿  main.cpp
-C:\Users\raulf\OneDrive\Escritorio\ProyectoFinalMP03\BomberSlimeBattle\main.cpp(54,46): warning C4018: '>=': no coinciden signed/unsigned
-C:\Users\raulf\OneDrive\Escritorio\ProyectoFinalMP03\BomberSlimeBattle\main.cpp(68,28): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\raulf\OneDrive\Escritorio\ProyectoFinalMP03\BomberSlimeBattle\main.cpp(84,42): warning C4018: '>=': no coinciden signed/unsigned
-C:\Users\raulf\OneDrive\Escritorio\ProyectoFinalMP03\BomberSlimeBattle\main.cpp(213,37): warning C4018: '>=': no coinciden signed/unsigned
-  BomberSlimeBattle.vcxproj -> C:\Users\raulf\OneDrive\Escritorio\ProyectoFinalMP03\BomberSlimeBattle\x64\Debug\BomberSlimeBattle.exe
+﻿  Astar.cpp
+  Bomb.cpp
+  Gusano.cpp
+  Highscore.cpp
+  Input.cpp
+  Jugador.cpp
+  main.cpp
+C:\Users\damviod\Desktop\ProyectoFinalMP03\BomberSlimeBattle\main.cpp(54,46): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\damviod\Desktop\ProyectoFinalMP03\BomberSlimeBattle\main.cpp(68,28): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\damviod\Desktop\ProyectoFinalMP03\BomberSlimeBattle\main.cpp(84,42): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\damviod\Desktop\ProyectoFinalMP03\BomberSlimeBattle\main.cpp(213,37): warning C4018: '>=': signed/unsigned mismatch
+  Mapa.cpp
+C:\Users\damviod\Desktop\ProyectoFinalMP03\BomberSlimeBattle\Mapa.cpp(124,62): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\damviod\Desktop\ProyectoFinalMP03\BomberSlimeBattle\Mapa.cpp(124,45): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  Menu.cpp
+  ResourceManager.cpp
+C:\Users\damviod\Desktop\ProyectoFinalMP03\BomberSlimeBattle\ResourceManager.cpp(140,32): warning C4267: 'return': conversion from 'size_t' to 'Sint32', possible loss of data
+C:\Users\damviod\Desktop\ProyectoFinalMP03\BomberSlimeBattle\ResourceManager.cpp(151,29): warning C4267: 'return': conversion from 'size_t' to 'Uint32', possible loss of data
+  Sound.cpp
+C:\Users\damviod\Desktop\ProyectoFinalMP03\BomberSlimeBattle\Sound.cpp(65,30): warning C4267: 'return': conversion from 'size_t' to 'Sint32', possible loss of data
+  Tiles.cpp
+  tinyxml2.cpp
+  Video.cpp
+  Generating Code...
+C:\Users\damviod\Desktop\ProyectoFinalMP03\BomberSlimeBattle\ResourceManager.cpp(78): warning C4715: 'ResourceManager::getGraphicByID': not all control paths return a value
+C:\Users\damviod\Desktop\ProyectoFinalMP03\BomberSlimeBattle\ResourceManager.cpp(142): warning C4715: 'ResourceManager::addGraphic': not all control paths return a value
+  BomberSlimeBattle.vcxproj -> C:\Users\damviod\Desktop\ProyectoFinalMP03\BomberSlimeBattle\x64\Debug\BomberSlimeBattle.exe
